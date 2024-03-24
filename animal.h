@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-class animal
+class Animal
 {
 	string species;
 	string kind;
@@ -17,7 +17,7 @@ class animal
 	int chip_number;
 
 public:
-	animal(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0);
+	Animal(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0);
 	void load_animal_data(string FileName);
 	bool will_animal_get_sick(int age, float weight, vector<string> health_booklet);
 	void dispaly_animal_info();

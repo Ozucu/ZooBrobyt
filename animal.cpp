@@ -1,5 +1,5 @@
 #include "animal.h"
-animal::animal(string Species, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number) {
+Animal::Animal(string Species, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number) {
 	species = Species;
 	kind = Kind;
 	name = Name;
@@ -12,6 +12,6 @@ animal::animal(string Species, string Kind, string Name, int Age, string Date_of
 	chip_number = Chip_number;
 }
 
-void animal::dispaly_animal_info() {
-	cout << kind;
+void Animal::dispaly_animal_info() {
+	cout << endl << kind;
 }

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-class habitat
+class Habitat
 {
 	float surface;
 	string species_living_in_habitat;
@@ -13,7 +13,7 @@ class habitat
 	vector<string> notes_for_habitat;
 
 public:
-	habitat(float = 0, string = "unknown", int = 0, vector<string> = {}, vector<int> = {}, string = "unknown", vector<string> = {});
+	Habitat(float = 0, string = "unknown", int = 0, vector<string> = {}, vector<int> = {}, string = "unknown", vector<string> = {});
 	void load_habitat_data(string FileName);
 	void display_habitat_info();
 
