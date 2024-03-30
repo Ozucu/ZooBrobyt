@@ -20,19 +20,21 @@ public:
 	void display_employee_info();
 	void display_warehouse_info();
 	void get_stuff_from_warehouse();
-//	void display_habitat_info();
-//	virtual void display_tasks() = 0;
-//	virtual void display_employee_menu() = 0;
+	void display_habitat_info();
+	virtual void display_tasks(); // problem gdy zmienie z wirtualnej na czysto wirtualn¹ poprzez dodanie = 0
+	virtual void display_employee_menu(); // problem gdy zmienie z wirtualnej na czysto wirtualn¹ poprzez dodanie = 0
 
 };
 
 class Employee_vector {
 	vector<Employee> list_of_employees;
+
 public:
+	Employee_vector(vector<Employee> ={});
 	void load_employee_data(string FileName);
 	void display_all_employees();
-	void add_employee(const Employee &employee);
-	void remove_employee();
+	void add_employee(Employee* employee);
+	void remove_employee(Employee* employee);
 
 };
 
@@ -41,8 +43,11 @@ class Director_of_the_zoo :public Employee
 	friend class Animal;
 	friend class Warehouse;
 	friend class Habitat;
+	friend class Employee_vector;
 public:
-	Director_of_the_zoo(string name, string last_name, string date_of_birth, string date_of_employment, string position, int ID_number_of_employee);
+	Director_of_the_zoo(string = "unknown", string = "unknown", string = "unknown", string = "unknown", string = "unknown", int = 0);
+	virtual void display_tasks();
+	virtual void display_employee_menu();
 
 };
 
@@ -53,8 +58,8 @@ class Manager_of_the_zoo :public Employee
 	friend class Habitat;
 public:
 	Manager_of_the_zoo(string = "unknown", string = "unknown", string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown");
-//	virtual void display_tasks();
-//	virtual void display_employee_menu();
+	virtual void display_tasks();
+	virtual void display_employee_menu();
 	void replain_warehouse();
 	void move_animal();
 	void repair_habitat_issues();
@@ -69,11 +74,14 @@ class Zookeeper :public Employee
 	friend class Warehouse;
 	friend class Habitat;
 public:
-	Zookeeper(string name, string last_name, string date_of_birth, string date_of_employment, string position, int ID_number_of_employee, string specialization = "unknown", vector<string> animal_under_care = {});
+	Zookeeper(string = "unknown", string = "unknown", string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", vector<string> = {});
+	virtual void display_tasks();
+	virtual void display_employee_menu();
 	void feed_animal();
 	void make_an_appointment_with_the_vet();
 	void take_animal_for_quarantine();
 	void report_issue_with_habitat();
+
 
 };
 
@@ -83,7 +91,9 @@ class Vet :public Employee
 	friend class Animal;
 	friend class Habitat;
 public:
-	Vet(string name, string last_name, string date_of_birth, string date_of_employment, string position, int ID_number_of_employee, string specialization = "unknown");
+	Vet(string = "unknown", string = "unknown", string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown");
+	virtual void display_tasks();
+	virtual void display_employee_menu();
 	void take_care_of_sick_animal();
 	void replain_medicine();
 

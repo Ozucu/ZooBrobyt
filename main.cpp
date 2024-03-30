@@ -17,5 +17,11 @@ int main() {
 void start() {
 	list_of_employees.load_employee_data("employees.csv");
 	list_of_employees.display_all_employees();
+	Manager_of_the_zoo manager;
+	Employee *wsk;
+	wsk = &manager;
+	list_of_employees.add_employee(wsk);
+	list_of_employees.display_all_employees();
+
 
 }
