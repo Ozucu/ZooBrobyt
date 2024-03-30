@@ -2,11 +2,20 @@
 #include "habitat.h"
 #include "employee.h"
 #include "warehouse.h"
+#include <fstream>
+
+Employee_vector list_of_employees;
+void start();
 
 int main() {
-	Animal First_Animal;
-	First_Animal.dispaly_animal_info();
-	Employee pracownik;
-	pracownik.display_employee_info();
+	
+	start();
+	
 	return 0;
+}
+
+void start() {
+	list_of_employees.load_employee_data("employees.csv");
+	list_of_employees.display_all_employees();
+
 }
