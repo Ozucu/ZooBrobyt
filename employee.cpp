@@ -9,7 +9,7 @@ Employee::Employee(string Name, string Last_name, string Date_of_birth, string D
 	ID_number_of_employee = ID_Number_of_employee;
 }
 void Employee::display_employee_info() {
-    cout << "\nName: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\n Date od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee;
+    cout << "\n\nName: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\n Date od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee;
 }
 void Employee::display_warehouse_info() {
 
@@ -45,21 +45,17 @@ void Employee_vector::load_employee_data(string FileName) {
         }
 
         if (data.size() > 0) {
-            if (data[4] == "Director") {
-                //               list_of_employees.push_back(Director_of_the_zoo(data[1], data[2], data[3], data[4], data[5], stoi(data[6])));
-            }
-            else if (data[4] == "Manager") {
-                list_of_employees.push_back(Manager_of_the_zoo(data[0], data[1], data[2], data[3], data[4], stoi(data[5]), data[6]));
-            }
+            if (data[4] == "Director") list_of_employees.push_back(Director_of_the_zoo(data[0], data[1], data[2], data[3], data[4], stoi(data[5])));
+            else if (data[4] == "Manager") list_of_employees.push_back(Manager_of_the_zoo(data[0], data[1], data[2], data[3], data[4], stoi(data[5]), data[6]));
             else if (data[4] == "Zookeeper") {
-                //               list_of_employees.push_back(Zookeeper(data[1], data[2], data[3], data[4], data[5], data[6], vector<string>(), stoi(data[7])));
+
+                vector<string> animals;
+                copy(data.begin() + 4, data.begin() + 4, back_inserter(animals));
+
+                list_of_employees.push_back(Zookeeper(data[0], data[1], data[2], data[3], data[4], stoi(data[5]), data[6], animals));
             }
-            else if (data[4] == "Vet") {
-                //               list_of_employees.push_back(Vet(data[1], data[2], data[3], data[4], data[5], data[6], stoi(data[7])));
-            }
-            else {
-                cerr << "Nieznany typ pracownika." << endl;
-            }
+            else if (data[4] == "Vet") list_of_employees.push_back(Vet(data[0], data[1], data[2], data[3], data[4], stoi(data[5])));
+            else cerr << "Nieznany typ pracownika." << endl;
         }
     }
 
@@ -97,6 +93,9 @@ void Director_of_the_zoo::display_tasks() {
 Manager_of_the_zoo::Manager_of_the_zoo(string Name, string Last_name, string Date_of_birth, string Date_of_employment, string Position, int ID_Number_of_employee, string Specialization) : Employee(Name, Last_name, Date_of_birth, Date_of_employment, Position, ID_Number_of_employee) {
     specialization = Specialization;
 }
+void Manager_of_the_zoo::display_employee_info() {
+    cout << "\n\nName: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\n Date od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee << "\nSpecialization: " << specialization;
+}
 void Manager_of_the_zoo::display_employee_menu() {
     display_tasks();
     int number_of_task = 0;
@@ -125,6 +124,10 @@ Zookeeper::Zookeeper(string Name, string Last_name, string Date_of_birth, string
     specialization = Specialization;
     animal_under_care = Animal_under_care;
 }
+void Zookeeper::display_employee_info(){
+    cout << "\nName: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\n Date od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee << "\nSpecialization: " << specialization << "Animals under care: ";
+    for (string animal : animal_under_care) cout << animal << " ";
+}
 void Zookeeper::display_employee_menu() {
 }
 void Zookeeper::display_tasks() {
@@ -147,6 +150,9 @@ void Zookeeper::report_issue_with_habitat() {
 
 Vet::Vet(string Name, string Last_name, string Date_of_birth, string Date_of_employment, string Position, int ID_Number_of_employee, string Specialization) : Employee(Name, Last_name, Date_of_birth, Date_of_employment, Position, ID_Number_of_employee) {
     specialization = Specialization;
+}
+void Vet::display_employee_info() {
+    cout << "\n\nName: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\n Date od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee << "\nSpecialization: " << specialization;
 }
 void Vet::display_tasks() {
 

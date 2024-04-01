@@ -20,8 +20,8 @@ void start() {
 	Manager_of_the_zoo manager;
 	Employee *wsk;
 	wsk = &manager;
-	list_of_employees.add_employee(wsk);
-	list_of_employees.display_all_employees();
+	//list_of_employees.add_employee(wsk);
+	//list_of_employees.display_all_employees();
 
 
 }

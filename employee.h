@@ -8,6 +8,7 @@ using namespace std;
 
 class Employee
 {
+protected:
 	string name;
 	string last_name;
 	string date_of_birth;
@@ -17,17 +18,17 @@ class Employee
 
 public:
 	Employee(string = "unknown", string = "unknown", string = "unknown", string = "unknown", string = "unknown", int = 0);
-	void display_employee_info();
 	void display_warehouse_info();
 	void get_stuff_from_warehouse();
 	void display_habitat_info();
+	virtual void display_employee_info();
 	virtual void display_tasks(); // problem gdy zmienie z wirtualnej na czysto wirtualn¹ poprzez dodanie = 0
 	virtual void display_employee_menu(); // problem gdy zmienie z wirtualnej na czysto wirtualn¹ poprzez dodanie = 0
 
 };
 
 class Employee_vector {
-	vector<Employee> list_of_employees;
+	vector<unique_ptr<Employee>> list_of_employees;
 
 public:
 	Employee_vector(vector<Employee> ={});
@@ -56,10 +57,12 @@ class Manager_of_the_zoo :public Employee
 	string specialization;
 	friend class Warehouse;
 	friend class Habitat;
+
 public:
 	Manager_of_the_zoo(string = "unknown", string = "unknown", string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown");
 	virtual void display_tasks();
 	virtual void display_employee_menu();
+	virtual void display_employee_info();
 	void replain_warehouse();
 	void move_animal();
 	void repair_habitat_issues();
@@ -73,10 +76,12 @@ class Zookeeper :public Employee
 	friend class Animal;
 	friend class Warehouse;
 	friend class Habitat;
+
 public:
 	Zookeeper(string = "unknown", string = "unknown", string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", vector<string> = {});
 	virtual void display_tasks();
 	virtual void display_employee_menu();
+	virtual void display_employee_info();
 	void feed_animal();
 	void make_an_appointment_with_the_vet();
 	void take_animal_for_quarantine();
@@ -92,6 +97,7 @@ class Vet :public Employee
 	friend class Habitat;
 public:
 	Vet(string = "unknown", string = "unknown", string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown");
+	virtual void display_employee_info();
 	virtual void display_tasks();
 	virtual void display_employee_menu();
 	void take_care_of_sick_animal();
