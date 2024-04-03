@@ -9,8 +9,12 @@ void start();
 
 int main() {
 	
-	start();
+	//start();
+	Reptile reptile;
+	Animal_vector animal_vector;
+	unique_ptr<Animal> ptr(new Reptile(reptile));
 	
+	animal_vector.add_animal(move(ptr));
 	return 0;
 }
 

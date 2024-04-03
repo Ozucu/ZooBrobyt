@@ -28,7 +28,8 @@ public:
 };
 
 class Employee_vector {
-	vector<unique_ptr<Employee>> list_of_employees;
+	//vector<unique_ptr<Employee>> list_of_employees;
+	vector<Employee> list_of_employees;
 
 public:
 	Employee_vector(vector<Employee> ={});
