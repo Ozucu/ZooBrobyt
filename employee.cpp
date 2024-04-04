@@ -24,10 +24,14 @@ void Employee::display_employee_menu() {}; // dodane przez to ¿e funkcje nie s¹ 
 void Employee::display_tasks() {}; // dodane przez to ¿e funkcje nie s¹ ju¿ czysto wirtualne
 
 //--------------------------------------------------------------EMPLOYEE VECTOR-----------------------------------------------------------------------
-Employee_vector::Employee_vector(vector<Employee> List_of_employees) {
-    list_of_employees = List_of_employees;
+//Employee_vector::Employee_vector(vector<unique_ptr<Employee>> List_of_employees) { //kopiowanie obiektu (zawartoœci wektora)
+//    list_of_employees = move(List_of_employees);
+//}
+Employee_vector::Employee_vector(vector<unique_ptr<Employee>>&& List_of_employees) //przenoszenie bez kopiowania (zawartoœci wektora)
+    : list_of_employees(std::move(List_of_employees)) {
 }
 void Employee_vector::load_employee_data(string FileName) {
+
     ifstream file(FileName);
     if (!file.is_open()) {
         cerr << "Nie mo¿na otworzyæ pliku." << endl;
@@ -43,39 +47,47 @@ void Employee_vector::load_employee_data(string FileName) {
         while (getline(ss, token, ';')) {
             data.push_back(token);
         }
-
-        if (data.size() > 0) {
-            if (data[4] == "Director") list_of_employees.push_back(Director_of_the_zoo(data[0], data[1], data[2], data[3], data[4], stoi(data[5])));
-            else if (data[4] == "Manager") list_of_employees.push_back(Manager_of_the_zoo(data[0], data[1], data[2], data[3], data[4], stoi(data[5]), data[6]));
-            else if (data[4] == "Zookeeper") {
-
-                vector<string> animals;
-                copy(data.begin() + 4, data.begin() + 4, back_inserter(animals));
-
-                list_of_employees.push_back(Zookeeper(data[0], data[1], data[2], data[3], data[4], stoi(data[5]), data[6], animals));
+                if (data.size() > 0) {
+                    if (data[4] == "Director")
+                        list_of_employees.push_back(move(make_unique<Director_of_the_zoo>(data[0], data[1], data[2], data[3], data[4], stoi(data[5]))));
+                    else if (data[4] == "Manager")
+                        list_of_employees.push_back(move(make_unique<Manager_of_the_zoo>(data[0], data[1], data[2], data[3], data[4], stoi(data[5]), data[6])));
+                    else if (data[4] == "Zookeeper") {
+                        vector<string> animals;
+                        copy(data.begin() + 7, data.end(), back_inserter(animals));
+                        list_of_employees.push_back(move(make_unique<Zookeeper>(data[0], data[1], data[2], data[3], data[4], stoi(data[5]), data[6], animals)));
+                    }
+                    else if (data[4] == "Vet")
+                        list_of_employees.push_back(move(make_unique<Vet>(data[0], data[1], data[2], data[3], data[4], stoi(data[5]))));
+                    else
+                        cerr << "Nieznany typ pracownika." << endl;
+                }
             }
-            else if (data[4] == "Vet") list_of_employees.push_back(Vet(data[0], data[1], data[2], data[3], data[4], stoi(data[5])));
-            else cerr << "Nieznany typ pracownika." << endl;
-        }
-    }
-
+        
+    
     file.close();
+    
 }
 void Employee_vector::display_all_employees() {
     for (auto& employee : list_of_employees) {
-        employee.display_employee_info();
+        employee -> display_employee_info();
     }
 
 }
-void Employee_vector::add_employee(Employee *employee) {
-    list_of_employees.push_back(*employee);
+void Employee_vector::add_employee(unique_ptr<Employee> employee) {
+    list_of_employees.push_back(move(employee));
 }
-void Employee_vector::remove_employee(Employee *employee) {
-   // auto it = find(list_of_employees.begin(), list_of_employees.end(), employee);
-   // if (it != list_of_employees.end()) {
-    //    list_of_employees.erase(it);
-   // }
+
+void Employee_vector::remove_employee(Employee* employee) {
+    auto it = find_if(list_of_employees.begin(), list_of_employees.end(), [&](const unique_ptr<Employee>& emp) {
+        return emp.get() == employee;
+        });
+
+    if (it != list_of_employees.end()) {
+        list_of_employees.erase(it);
+    }
 }
+
 
 
 //-------------------------------------------------------- DIRECTOR ---------------------------------------------------------------

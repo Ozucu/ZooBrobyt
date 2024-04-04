@@ -15,7 +15,9 @@ Animal::Animal(string Species, string Kind, string Name, int Age, string Date_of
 void Animal::display_animal_info() {
 	cout << endl << kind;
 }
-
+Animal_vector::Animal_vector(vector<unique_ptr<Animal>> Animal_vector) {
+	animal_vector = move(Animal_vector);
+}
 void Animal_vector::add_animal(unique_ptr<Animal> animal) {
 	animal_vector.push_back(move(animal));
 	for (const auto& animal_ptr : animal_vector) {

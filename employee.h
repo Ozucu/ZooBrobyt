@@ -28,14 +28,15 @@ public:
 };
 
 class Employee_vector {
-	//vector<unique_ptr<Employee>> list_of_employees;
-	vector<Employee> list_of_employees;
+	vector<unique_ptr<Employee>> list_of_employees;
+
 
 public:
-	Employee_vector(vector<Employee> ={});
+	//Employee_vector(vector<unique_ptr<Employee>> = {}); //kopiowanie obiektu
+	Employee_vector(vector<unique_ptr<Employee>> && = {});//przenoszenie bez kopiowania
 	void load_employee_data(string FileName);
 	void display_all_employees();
-	void add_employee(Employee* employee);
+	void add_employee(unique_ptr<Employee> employee);
 	void remove_employee(Employee* employee);
 
 };

@@ -29,6 +29,7 @@ class Animal_vector
 {
 	vector<unique_ptr<Animal>> animal_vector;
 public:
+	Animal_vector(vector<unique_ptr<Animal>> = {});
 	void add_animal(unique_ptr<Animal> animal);
 };
 
