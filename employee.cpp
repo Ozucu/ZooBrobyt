@@ -78,14 +78,13 @@ void Employee_vector::add_employee(unique_ptr<Employee> employee) {
     list_of_employees.push_back(move(employee));
 }
 
-void Employee_vector::remove_employee(Employee* employee) {
-    auto it = find_if(list_of_employees.begin(), list_of_employees.end(), [&](const unique_ptr<Employee>& emp) {
-        return emp.get() == employee;
-        });
-
-    if (it != list_of_employees.end()) {
-        list_of_employees.erase(it);
+void Employee_vector::remove_employee(size_t index) {
+    if (index >= list_of_employees.size()) {
+        std::cerr << "Index out of range." << std::endl;
+        return;
     }
+
+    list_of_employees.erase(list_of_employees.begin() + index);
 }
 
 

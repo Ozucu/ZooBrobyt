@@ -5,7 +5,7 @@
 #include <fstream>
 
 Employee_vector list_of_employees;
-void start();
+unique_ptr<Employee> director_ptr = make_unique<Director_of_the_zoo>("Director", "Director", "01.01.1010", "01.01.1010", "Director", 11);
 
 int main() {
 	
@@ -21,7 +21,17 @@ int main() {
 void start() {
 	list_of_employees.load_employee_data("employees.csv");
 	list_of_employees.display_all_employees();
-	//unique_ptr<Employee> manager_ptr = make_unique<Manager_of_the_zoo>();
-	//list_of_employees.add_employee(move(manager_ptr));
 
+}
+void test_employee_vector() {
+	Employee* employee_to_remove = list_of_employees[1];
+	list_of_employees.add_employee(move(director_ptr));
+	list_of_employees.display_all_employees();
+}
+void test_director() {
+	
+	director_ptr->display_employee_info();
+	director_ptr->display_employee_menu();
+	director_ptr->display_tasks();
+	
 }
