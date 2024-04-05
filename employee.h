@@ -37,7 +37,7 @@ public:
 	void load_employee_data(string FileName);
 	void display_all_employees();
 	void add_employee(unique_ptr<Employee> employee);
-	void remove_employee(Employee* employee);
+	void remove_employee(size_t index);
 
 };
 
@@ -50,7 +50,7 @@ class Director_of_the_zoo :public Employee
 public:
 	Director_of_the_zoo(string = "unknown", string = "unknown", string = "unknown", string = "unknown", string = "unknown", int = 0);
 	virtual void display_tasks();
-	virtual void display_employee_menu();
+	virtual void display_employee_menu(Employee_vector list_of_employees);
 
 };
 
