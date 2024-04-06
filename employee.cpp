@@ -194,9 +194,21 @@ void Zookeeper::display_employee_info(){
     cout << "\n\n";
 }
 void Zookeeper::display_employee_menu() {
+    int choice = 1;
+    while (choice != 0) {
+        display_tasks();
+        cout << "Your choice (0 to escape): ";
+        cin >> choice;
+        if (choice == 1) feed_animal();
+        else if (choice == 2) make_an_appointment_with_the_vet();
+        else if (choice == 3) report_issue_with_habitat();
+        else if (choice == 4) take_animal_for_quarantine();
+        else if (choice != 0) cerr << "Wrong number";
+    }
 }
 void Zookeeper::display_tasks() {
-
+    system("cls");
+    cout << "As an zookeeper you can :\n1. Feed an animal.\n2. Make an appointment with the vet.\n3. Report habitat issue.\n4. Take animal for quarantine.\n";
 }
 void Zookeeper::feed_animal() {
 
@@ -220,10 +232,19 @@ void Vet::display_employee_info() {
     cout << "Name: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\nDate od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee << "\nSpecialization: " << specialization<<"\n\n";
 }
 void Vet::display_tasks() {
-
+    system("cls");
+    cout << "As an vet you can :\n1. Take caree of sick animal.\n2. Replain medicine.\n";
 }
 void Vet::display_employee_menu() {
-
+    int choice = 1;
+    while (choice != 0) {
+        display_tasks();
+        cout << "Your choice (0 to escape): ";
+        cin >> choice;
+        if (choice == 1) take_care_of_sick_animal();
+        else if (choice == 2) replain_medicine();
+        else if (choice != 0) cerr << "Wrong number";
+    }
 }
 void Vet::take_care_of_sick_animal() {
 

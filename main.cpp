@@ -42,4 +42,4 @@ void test_director() {
 	static_cast<Director_of_the_zoo*>(director_ptr.get())->display_employee_menu(move(list_of_employees));
 	
 }
-//do naprawienia to ¿e wywo³uje nie wywo³uje metody przys³aniaj¹cej display_employee_menu tylko tê z klasy employee dla director_ptr
+// do dorobienia wy³apywanie z³ego typu pracownika i zamiana zookeeper na Zookeeper
