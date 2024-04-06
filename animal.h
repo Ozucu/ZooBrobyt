@@ -15,9 +15,10 @@ class Animal
 	string date_of_arrival_to_zoo;
 	string in_which_habitat;
 	int chip_number;
+	bool is_animal_healthy;
 
 public:
-	Animal(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0);
+	Animal(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0, bool = true);
 	void load_animal_data(string FileName);
 	bool will_animal_get_sick(int age, float weight, vector<string> health_booklet);
 	virtual void display_animal_info();
