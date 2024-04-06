@@ -69,10 +69,7 @@ void Employee_vector::load_employee_data(string FileName) {
     
 }
 void Employee_vector::display_all_employees() {
-    for (auto& employee : list_of_employees) {
-        employee -> display_employee_info();
-    }
-
+    for (auto& employee : list_of_employees) employee -> display_employee_info();
 }
 void Employee_vector::add_employee(unique_ptr<Employee> employee) {
     list_of_employees.push_back(move(employee));
@@ -82,11 +79,8 @@ void Employee_vector::remove_employee(size_t index) {
         std::cerr << "Index out of range." << std::endl;
         return;
     }
-
     list_of_employees.erase(list_of_employees.begin() + index);
 }
-
-
 
 //-------------------------------------------------------- DIRECTOR ---------------------------------------------------------------
 Director_of_the_zoo::Director_of_the_zoo(string Name, string Last_name, string Date_of_birth, string Date_of_employment, string Position, int ID_Number_of_employee) : Employee(Name, Last_name, Date_of_birth, Date_of_employment, Position, ID_Number_of_employee) {
@@ -162,13 +156,18 @@ void Manager_of_the_zoo::display_employee_info() {
     cout << "Name: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\n Date od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee << "\nSpecialization: " << specialization << "\n\n";
 }
 void Manager_of_the_zoo::display_employee_menu() {
-    display_tasks();
-    int number_of_task = 0;
-    cout << "Choose number of task from listed above: ";
-    if (number_of_task == 1) move_animal();
-    else if (number_of_task == 2) display_warehouse_info();
-    else if (number_of_task == 3) replain_warehouse();
-    else cout << "Wrong number of task / no number picked";
+
+    int choice = 1;
+    while (choice != 0) {
+        display_tasks();
+        cout << "Your choice (0 to escape): ";
+        cin >> choice;
+        if (choice == 1) move_animal();
+        else if (choice == 2) display_warehouse_info();
+        else if (choice == 3) replain_warehouse();
+        else if (choice != 0) cerr << "Wrong number";
+    }
+   
 }
 void Manager_of_the_zoo::display_tasks() {
 	system("cls");
