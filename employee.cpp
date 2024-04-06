@@ -93,56 +93,59 @@ Director_of_the_zoo::Director_of_the_zoo(string Name, string Last_name, string D
 
 }
 void Director_of_the_zoo::display_employee_menu(Employee_vector list_of_employees) {
-    display_tasks();
-    int choice;
-    cout << "Your choice: ";
-    cin >> choice;
-    if (choice == 1) {
-        string name;
-        string last_name;
-        string date_of_birth;
-        string date_of_employment;
-        string position;
-        int ID_number_of_employee;
-        string specialization;
-        vector<string> animal_under_care;
-        cout << "Name: "; cin >> name;
-        cout << "Last Name: "; cin >> last_name;
-        cout << "Date od birth: "; cin >> date_of_birth;
-        cout << "Date od employment: "; cin >> date_of_employment;
-        cout << "Position: "; cin >> position;
-        cout << "ID number: "; cin >> ID_number_of_employee;
-        if (position != "Director") {
-            cout << "Specialization: "; cin >> specialization;
-        }
-        if (position == "Zookeeper") {
-            string animal = {};
-            cout << "Animals under care (to end press 0): ";
-            while (animal != "0") {
-                cin >> animal;
-                animal_under_care.push_back(animal);
+    int choice = 1;
+    while (choice != 0) {
+        display_tasks();
+        cout << "Your choice (0 to escape): ";
+        cin >> choice;
+        if (choice == 1) {
+            string name;
+            string last_name;
+            string date_of_birth;
+            string date_of_employment;
+            string position;
+            int ID_number_of_employee;
+            string specialization;
+            vector<string> animal_under_care;
+            cout << "Name: "; cin >> name;
+            cout << "Last Name: "; cin >> last_name;
+            cout << "Date od birth: "; cin >> date_of_birth;
+            cout << "Date od employment: "; cin >> date_of_employment;
+            cout << "Position: "; cin >> position;
+            cout << "ID number: "; cin >> ID_number_of_employee;
+            if (position != "Director") {
+                cout << "Specialization: "; cin >> specialization;
             }
+            if (position == "Zookeeper") {
+                string animal = {};
+                cout << "Animals under care (to end press 0): ";
+                while (animal != "0") {
+                    cin >> animal;
+                    animal_under_care.push_back(animal);
+                }
+            }
+            unique_ptr<Employee> new_employee;
+            if (position == "Director") new_employee = make_unique<Director_of_the_zoo>(name, last_name, date_of_birth, date_of_employment, position, ID_number_of_employee);
+            else if (position == "Manager") new_employee = make_unique<Manager_of_the_zoo>(name, last_name, date_of_birth, date_of_employment, position, ID_number_of_employee, specialization);
+            else if (position == "Zookeeper") new_employee = make_unique<Zookeeper>(name, last_name, date_of_birth, date_of_employment, position, ID_number_of_employee, specialization, animal_under_care);
+            else if (position == "Vet") new_employee = make_unique<Vet>(name, last_name, date_of_birth, date_of_employment, position, ID_number_of_employee, specialization);
+            else cerr << "Wrong type of employee";
+
+
+            list_of_employees.add_employee(move(new_employee));
         }
-        unique_ptr<Employee> new_employee;
-        if (position == "Director") new_employee = make_unique<Director_of_the_zoo>(name, last_name, date_of_birth, date_of_employment, position, ID_number_of_employee);
-        else if (position == "Manager") new_employee = make_unique<Manager_of_the_zoo>(name, last_name, date_of_birth, date_of_employment, position, ID_number_of_employee, specialization);
-        else if (position == "Zookeeper") new_employee = make_unique<Zookeeper>(name, last_name, date_of_birth, date_of_employment, position, ID_number_of_employee, specialization, animal_under_care);
-        else if (position == "Vet") new_employee = make_unique<Vet>(name, last_name, date_of_birth, date_of_employment, position, ID_number_of_employee, specialization);
-        else cerr << "Wrong type of employee";
-
-
-        list_of_employees.add_employee(move(new_employee));
+        else if (choice == 2) {
+            int number;
+            cout << "ID number of employee which will be erased: ";
+            cin >> number;
+            list_of_employees.remove_employee(number);
+        }
+        else if (choice == 3) display_warehouse_info();
+        else if (choice == 4) display_habitat_info();
+        else if (choice == 5) list_of_employees.display_all_employees();
+        else if (choice != 0) cerr << "Wrong number";
     }
-    else if (choice == 2) {
-        int number;
-        cout << "ID number of employee which will be erased: ";
-        cin >> number;
-        list_of_employees.remove_employee(number);
-    }
-    else if (choice == 3) display_warehouse_info();
-    else if (choice == 4) display_habitat_info();
-    else if (choice == 5) list_of_employees.display_all_employees();
-    else cerr << "Wrong number";
+    
 
 
 }
@@ -215,7 +218,7 @@ Vet::Vet(string Name, string Last_name, string Date_of_birth, string Date_of_emp
     specialization = Specialization;
 }
 void Vet::display_employee_info() {
-    cout << "Name: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\n Date od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee << "\nSpecialization: " << specialization<<"\n\n";
+    cout << "Name: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\nDate od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee << "\nSpecialization: " << specialization<<"\n\n";
 }
 void Vet::display_tasks() {
 

@@ -38,7 +38,8 @@ void test_director() {
 	cout << "TEST DYREKTORA\n\nWYSWIETLENIE INFORMACJI O DYREKTORZE:\n";
 	director_ptr->display_employee_info();
 	cout << "WYSWIETLENIE MENU OPCJI DYREKTORA:\n";
-	director_ptr->display_employee_menu();
+	//director_ptr->display_employee_menu();
+	static_cast<Director_of_the_zoo*>(director_ptr.get())->display_employee_menu(move(list_of_employees));
 	
 }
 //do naprawienia to ¿e wywo³uje nie wywo³uje metody przys³aniaj¹cej display_employee_menu tylko tê z klasy employee dla director_ptr
