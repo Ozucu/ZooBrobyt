@@ -67,7 +67,6 @@ public:
 	virtual void display_employee_info();
 	void replain_warehouse();
 	void move_animal();
-	void repair_habitat_issues();
 };
 
 class Zookeeper :public Employee
@@ -87,22 +86,24 @@ public:
 	void feed_animal();
 	void make_an_appointment_with_the_vet();
 	void take_animal_for_quarantine();
-	void report_issue_with_habitat();
+
 
 
 };
 
 class Vet :public Employee
 {
+	vector<string> appointments;
 	string specialization;
 	friend class Animal;
 	friend class Habitat;
 public:
-	Vet(string = "unknown", string = "unknown", string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown");
+	Vet(string = "unknown", string = "unknown", string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", vector<string> = {});
 	virtual void display_employee_info();
 	virtual void display_tasks();
 	virtual void display_employee_menu();
 	void take_care_of_sick_animal();
+	void take_animal_for_quarantine();
 	void replain_medicine();
 
 };

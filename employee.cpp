@@ -179,9 +179,7 @@ void Manager_of_the_zoo::move_animal() {
 void Manager_of_the_zoo::replain_warehouse() {
 
 }
-void Manager_of_the_zoo::repair_habitat_issues() {
 
-}
 
 //-------------------------------------------------------- ZOOKEPER ----------------------------------------------------------------
 Zookeeper::Zookeeper(string Name, string Last_name, string Date_of_birth, string Date_of_employment, string Position, int ID_Number_of_employee, string Specialization, vector<string> Animal_under_care) : Employee(Name, Last_name, Date_of_birth, Date_of_employment, Position, ID_Number_of_employee) {
@@ -219,14 +217,13 @@ void Zookeeper::make_an_appointment_with_the_vet() {
 void Zookeeper::take_animal_for_quarantine() {
 
 }
-void Zookeeper::report_issue_with_habitat() {
 
-}
 
 //---------------------------------------------------------- VET -------------------------------------------------------------------
 
-Vet::Vet(string Name, string Last_name, string Date_of_birth, string Date_of_employment, string Position, int ID_Number_of_employee, string Specialization) : Employee(Name, Last_name, Date_of_birth, Date_of_employment, Position, ID_Number_of_employee) {
+Vet::Vet(string Name, string Last_name, string Date_of_birth, string Date_of_employment, string Position, int ID_Number_of_employee, string Specialization, vector<string> Appointments) : Employee(Name, Last_name, Date_of_birth, Date_of_employment, Position, ID_Number_of_employee) {
     specialization = Specialization;
+    appointments = Appointments;
 }
 void Vet::display_employee_info() {
     cout << "Name: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\nDate od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee << "\nSpecialization: " << specialization<<"\n\n";
@@ -250,5 +247,8 @@ void Vet::take_care_of_sick_animal() {
 
 }
 void Vet::replain_medicine() {
+
+}
+void Vet::take_animal_for_quarantine() {
 
 }
