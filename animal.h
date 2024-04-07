@@ -43,3 +43,39 @@ public:
 
 };
 
+class Mammal :public Animal
+{
+	Mammal(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0);
+	virtual void display_animal_info();
+
+};
+
+class Amphibian :public Animal
+{
+	Amphibian(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0);
+	virtual void display_animal_info();
+
+};
+
+class Bird :public Animal
+{
+	Bird(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0);
+	virtual void display_animal_info();
+};
+
+class Fish :public Animal
+{
+	int amount_of_fish;
+	Fish(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0, int = 0);
+	virtual void display_animal_info();
+};
+
+class Invertebrate :public Animal
+{
+	int amount_of_invertebrate; // bezkrêgowców
+	string type; //miêczak / stawonóg
+	string subtype; // owad / pajêczak / skorupiak
+	Invertebrate(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0, int = 0, string = "unknown", string = "unknown");
+	virtual void display_animal_info();
+
+};
