@@ -180,7 +180,6 @@ void Manager_of_the_zoo::replain_warehouse() {
 
 }
 
-
 //-------------------------------------------------------- ZOOKEPER ----------------------------------------------------------------
 Zookeeper::Zookeeper(string Name, string Last_name, string Date_of_birth, string Date_of_employment, string Position, int ID_Number_of_employee, string Specialization, vector<string> Animal_under_care) : Employee(Name, Last_name, Date_of_birth, Date_of_employment, Position, ID_Number_of_employee) {
     specialization = Specialization;
@@ -199,14 +198,13 @@ void Zookeeper::display_employee_menu() {
         cin >> choice;
         if (choice == 1) feed_animal();
         else if (choice == 2) make_an_appointment_with_the_vet();
-        else if (choice == 3) report_issue_with_habitat();
-        else if (choice == 4) take_animal_for_quarantine();
+        else if (choice == 3) take_animal_for_quarantine();
         else if (choice != 0) cerr << "Wrong number";
     }
 }
 void Zookeeper::display_tasks() {
     system("cls");
-    cout << "As an zookeeper you can :\n1. Feed an animal.\n2. Make an appointment with the vet.\n3. Report habitat issue.\n4. Take animal for quarantine.\n";
+    cout << "As an zookeeper you can :\n1. Feed an animal.\n2. Make an appointment with the vet.\n3. Take animal for quarantine.\n";
 }
 void Zookeeper::feed_animal() {
 
@@ -217,7 +215,6 @@ void Zookeeper::make_an_appointment_with_the_vet() {
 void Zookeeper::take_animal_for_quarantine() {
 
 }
-
 
 //---------------------------------------------------------- VET -------------------------------------------------------------------
 
