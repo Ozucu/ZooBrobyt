@@ -14,7 +14,7 @@ Animal::Animal(string Species, string Kind, string Name, int Age, string Date_of
 }
 
 void Animal::display_animal_info() {
-	cout << endl << kind;
+	
 }
 Animal_vector::Animal_vector(vector<unique_ptr<Animal>> Animal_vector) {
 	animal_vector = move(Animal_vector);
@@ -28,5 +28,5 @@ Reptile::Reptile(string Species, string Kind, string Name, int Age, string Date_
 	test = Test;
 }
 void Reptile::display_animal_info() {
-	cout << "dziala lol";
+	
 }
