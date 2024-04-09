@@ -42,4 +42,4 @@ void test_director() {
 	static_cast<Director_of_the_zoo*>(director_ptr.get())->display_employee_menu(move(list_of_employees));
 	
 }
-// do dorobienia wy³apywanie z³ego typu pracownika i zamiana zookeeper na Zookeeper
+//do dorobienia wy³apywanie z³ego typu pracownika i zamiana zookeeper na Zookeeper
