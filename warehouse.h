@@ -2,15 +2,22 @@
 #include <vector>
 #include <iostream>
 using namespace std;
+class Food
+{
+	string type_of_product;
+	int amount;
+	string expiration_date;
+	string date_of_receipt; //w sensie kiedy towar przyjecha³ ¿eby policzyæ jego przydatnoœæ do podania zwierzakom
+public:
+	Food(string = "unknown", int = 0, string = "unknown", string = "unknown");
+
+};
 class Warehouse
 {
-	vector<float> stock_status;
-	vector<string> type_of_product;
-	vector<string> expiration_date;
-	vector<string> date_of_receipt; //w sensie kiedy towar przyjecha³ ¿eby policzyæ jego przydatnoœæ do podania zwierzakom
+	vector<unique_ptr<Food>> warehouse_status;
 
 public:
-	Warehouse(vector<float> = {}, vector<string> = {}, vector<string> = {}, vector<string> = {});
+	Warehouse(vector<unique_ptr<Food>> = {});
 	void load_warehouse_data();
 	void display_warehouse_info();
 };
