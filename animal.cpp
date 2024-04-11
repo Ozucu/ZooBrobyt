@@ -35,14 +35,22 @@ void Reptile::display_animal_info() {
 Mammal::Mammal(string Species, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number) : Animal(Species, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
 
 }
+void Mammal ::display_animal_info() {
+
+}
 
 //---------------------------------------------------------------AMPHIBIAN----------------------------------------------------------------------------
 Amphibian::Amphibian(string Species, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number) : Animal(Species, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
 
 }
+void Amphibian::display_animal_info() {
 
+}
 //---------------------------------------------------------------BIRD---------------------------------------------------------------------------------
 Bird::Bird(string Species, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number) : Animal(Species, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
+
+}
+void Bird::display_animal_info() {
 
 }
 
@@ -50,12 +58,17 @@ Bird::Bird(string Species, string Kind, string Name, int Age, string Date_of_fee
 Fish::Fish(string Species, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number, int Amount_of_fish) : Animal(Species, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
 	amount_of_fish = Amount_of_fish;
 }
+void Fish::display_animal_info() {
 
+}
 //---------------------------------------------------------------INVERTEBRATE-------------------------------------------------------------------------
 Invertebrate::Invertebrate(string Species, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number, int Amount_of_invertebrate, string Type, string Subtype) : Animal(Species, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
 	amount_of_invertebrate = Amount_of_invertebrate;
 	type = Type;
 	subtype = Subtype;
+}
+void Invertebrate::display_animal_info() {
+
 }
 
 

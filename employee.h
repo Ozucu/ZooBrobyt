@@ -18,9 +18,9 @@ protected:
 
 public:
 	Employee(string = "unknown", string = "unknown", string = "unknown", string = "unknown", string = "unknown", int = 0);
-	void display_warehouse_info();
+	//void display_warehouse_info();
 	void get_stuff_from_warehouse();
-	void display_habitat_info();
+	//void display_habitat_info();
 	virtual void display_employee_info();
 	virtual void display_tasks(); // problem gdy zmienie z wirtualnej na czysto wirtualn¹ poprzez dodanie = 0
 	virtual void display_employee_menu(); // problem gdy zmienie z wirtualnej na czysto wirtualn¹ poprzez dodanie = 0
@@ -28,8 +28,8 @@ public:
 };
 
 class Employee_vector {
-	vector<unique_ptr<Employee>> list_of_employees;
 
+	vector<unique_ptr<Employee>> list_of_employees;
 
 public:
 	//Employee_vector(vector<unique_ptr<Employee>> = {}); //kopiowanie obiektu

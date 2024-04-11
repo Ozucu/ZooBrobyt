@@ -43,3 +43,4 @@ void test_director() {
 	
 }
 //do dorobienia wy³apywanie z³ego typu pracownika i zamiana zookeeper na Zookeeper
+//na odwórt daæ freind class

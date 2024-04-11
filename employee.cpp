@@ -11,15 +11,11 @@ Employee::Employee(string Name, string Last_name, string Date_of_birth, string D
 void Employee::display_employee_info() {
     cout << "Name: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\n Date od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee << "\n\n";
 }
-void Employee::display_warehouse_info() {
-
-}
+//void Employee::display_warehouse_info() {}
 void Employee::get_stuff_from_warehouse() {
 
 }
-void Employee::display_habitat_info() {
-
-}
+//void Employee::display_habitat_info() {}
 void Employee::display_employee_menu() {}; // dodane przez to ¿e funkcje nie s¹ ju¿ czysto wirtualne
 void Employee::display_tasks() {}; // dodane przez to ¿e funkcje nie s¹ ju¿ czysto wirtualne
 
@@ -134,8 +130,8 @@ void Director_of_the_zoo::display_employee_menu(Employee_vector list_of_employee
             cin >> number;
             list_of_employees.remove_employee(number);
         }
-        else if (choice == 3) display_warehouse_info();
-        else if (choice == 4) display_habitat_info();
+        //else if (choice == 3) display_warehouse_info();
+        //else if (choice == 4) display_habitat_info();
         else if (choice == 5) list_of_employees.display_all_employees();
         else if (choice != 0) cerr << "Wrong number";
     }
@@ -163,7 +159,7 @@ void Manager_of_the_zoo::display_employee_menu() {
         cout << "Your choice (0 to escape): ";
         cin >> choice;
         if (choice == 1) move_animal();
-        else if (choice == 2) display_warehouse_info();
+        //else if (choice == 2) display_warehouse_info();
         else if (choice == 3) replain_warehouse();
         else if (choice != 0) cerr << "Wrong number";
     }
