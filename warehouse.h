@@ -23,9 +23,13 @@ public:
 };
 class Meat :public Food
 {
+public:
+	Meat(string = "unknown", int = 0, string = "unknown", string = "unknown");
 
 };
 class Plant_food :public Food
 {
+public:
+	Plant_food(string = "unknown", int = 0, string = "unknown", string = "unknown");
 
 };
