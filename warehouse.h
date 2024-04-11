@@ -21,4 +21,11 @@ public:
 	void load_warehouse_data();
 	void display_warehouse_info();
 };
+class Meat :public Food
+{
 
+};
+class Plant_food :public Food
+{
+
+};
