@@ -1,6 +1,6 @@
 #include "animal.h"
-Animal::Animal(string Species, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number, bool Is_animal_healthy) {
-	species = Species;
+Animal::Animal(string Cluster, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number, bool Is_animal_healthy) {
+	cluster = Cluster;
 	kind = Kind;
 	name = Name;
 	age = Age;
@@ -16,23 +16,86 @@ Animal::Animal(string Species, string Kind, string Name, int Age, string Date_of
 void Animal::display_animal_info() {
 	
 }
-Animal_vector::Animal_vector(vector<unique_ptr<Animal>> Animal_vector) {
-	animal_vector = move(Animal_vector);
+//---------------------------------------------------------------ANIMAL VECTOR-----------------------------------------------------------------------------
+Animal_vector::Animal_vector(vector<unique_ptr<Animal>> List_of_animals) {
+	list_of_animals = move(List_of_animals);
+}
+void Animal_vector::load_animal_data(string FileName) {
+    ifstream file(FileName);
+    if (!file.is_open()) {
+        cerr << "Nie mo¿na otworzyæ pliku." << endl;
+        return;
+    }
+
+    string line;
+    getline(file, line); // headline
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string token;
+        vector<string> data;
+        while (getline(ss, token, ';')) {
+            data.push_back(token);
+        }
+        if (data.size() > 0) {
+            if (data[0] == "Reptile") {
+                vector<string> booklet;
+                copy(data.begin() + 10, data.end(), back_inserter(booklet));
+                list_of_animals.push_back(move(make_unique<Reptile>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], stoi(data[8]), data[9])));
+
+            }
+            else if (data[0] == "Mammal") {
+                vector<string> booklet;
+                copy(data.begin() + 10, data.end(), back_inserter(booklet));
+                list_of_animals.push_back(move(make_unique<Mammal>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], data[8], stoi(data[9]))));
+
+            }
+            else if (data[0] == "Amphibian") {
+                vector<string> booklet;
+                copy(data.begin() + 10, data.end(), back_inserter(booklet));
+                list_of_animals.push_back(move(make_unique<Amphibian>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], data[8], stoi(data[9]))));
+
+            }
+            else if (data[0] == "Bird") {
+                vector<string> booklet;
+                copy(data.begin() + 10, data.end(), back_inserter(booklet));
+                list_of_animals.push_back(move(make_unique<Bird>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], data[8], stoi(data[9]))));
+
+            }
+            else if (data[0] == "Fish") {
+                vector<string> booklet;
+                copy(data.begin() + 11, data.end(), back_inserter(booklet));
+                list_of_animals.push_back(move(make_unique<Fish>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], data[8], stoi(data[9]))), stoi(data[10]));
+
+            }
+            else if (data[0] == "Invertebrate") {
+                vector<string> booklet;
+                copy(data.begin() + 10, data.end(), back_inserter(booklet));
+                list_of_animals.push_back(move(make_unique<Invertebrate>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], data[8], stoi(data[9]))));
+
+            }
+           
+            else
+                cerr << "Nieznany typ zwierzecia." << endl;
+        }
+    }
+
+
+    file.close();
 }
 void Animal_vector::add_animal(unique_ptr<Animal> animal) {
-	animal_vector.push_back(move(animal));
-	for (const auto& animal_ptr : animal_vector) animal_ptr->display_animal_info();
+	list_of_animals.push_back(move(animal));
+	for (const auto& animal_ptr : list_of_animals) animal_ptr->display_animal_info();
 
 }
 //---------------------------------------------------------------REPTILE-----------------------------------------------------------------------------
-Reptile::Reptile(string Species, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number, string Test) : Animal(Species, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
-	test = Test;
+Reptile::Reptile(string Cluster, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number) : Animal(Cluster, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
+
 }
 void Reptile::display_animal_info() {
 	
 }
 //---------------------------------------------------------------MAMMAL-------------------------------------------------------------------------------
-Mammal::Mammal(string Species, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number) : Animal(Species, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
+Mammal::Mammal(string Cluster, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number) : Animal(Cluster, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
 
 }
 void Mammal ::display_animal_info() {
@@ -40,14 +103,14 @@ void Mammal ::display_animal_info() {
 }
 
 //---------------------------------------------------------------AMPHIBIAN----------------------------------------------------------------------------
-Amphibian::Amphibian(string Species, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number) : Animal(Species, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
+Amphibian::Amphibian(string Cluster, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number) : Animal(Cluster, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
 
 }
 void Amphibian::display_animal_info() {
 
 }
 //---------------------------------------------------------------BIRD---------------------------------------------------------------------------------
-Bird::Bird(string Species, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number) : Animal(Species, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
+Bird::Bird(string Cluster, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number) : Animal(Cluster, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
 
 }
 void Bird::display_animal_info() {
@@ -55,14 +118,14 @@ void Bird::display_animal_info() {
 }
 
 //---------------------------------------------------------------FISH---------------------------------------------------------------------------------
-Fish::Fish(string Species, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number, int Amount_of_fish) : Animal(Species, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
+Fish::Fish(string Cluster, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number, int Amount_of_fish) : Animal(Cluster, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
 	amount_of_fish = Amount_of_fish;
 }
 void Fish::display_animal_info() {
 
 }
 //---------------------------------------------------------------INVERTEBRATE-------------------------------------------------------------------------
-Invertebrate::Invertebrate(string Species, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number, int Amount_of_invertebrate, string Type, string Subtype) : Animal(Species, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
+Invertebrate::Invertebrate(string Cluster, string Kind, string Name, int Age, string Date_of_feeding, float Weight, vector<string> Health_booklet, string Date_of_arrival, string in_which, int Chip_number, int Amount_of_invertebrate, string Type, string Subtype) : Animal(Cluster, Kind, Name, Age, Date_of_feeding, Weight, Health_booklet, Date_of_arrival, in_which, Chip_number) {
 	amount_of_invertebrate = Amount_of_invertebrate;
 	type = Type;
 	subtype = Subtype;

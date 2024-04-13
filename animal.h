@@ -1,11 +1,13 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include<sstream>
 using namespace std;
 
 class Animal
 {
-	string species;
+	string cluster;
 	string kind;
 	string name;
 	int age;
@@ -19,7 +21,6 @@ class Animal
 
 public:
 	Animal(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0, bool = true);
-	void load_animal_data(string FileName);
 	bool will_animal_get_sick(int age, float weight, vector<string> health_booklet);
 	virtual void display_animal_info();
 	
@@ -28,17 +29,18 @@ public:
 
 class Animal_vector
 {
-	vector<unique_ptr<Animal>> animal_vector;
+	vector<unique_ptr<Animal>> list_of_animals;
 public:
 	Animal_vector(vector<unique_ptr<Animal>> = {});
+	void load_animal_data(string FileName);
 	void add_animal(unique_ptr<Animal> animal);
 };
 
 class Reptile :public Animal
 {
-	string test;
+
 public:
-	Reptile(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0, string = {});
+	Reptile(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0);
 	virtual void display_animal_info();
 
 };

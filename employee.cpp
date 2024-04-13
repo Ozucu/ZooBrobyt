@@ -11,11 +11,9 @@ Employee::Employee(string Name, string Last_name, string Date_of_birth, string D
 void Employee::display_employee_info() {
     cout << "Name: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\n Date od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee << "\n\n";
 }
-//void Employee::display_warehouse_info() {}
 void Employee::get_stuff_from_warehouse() {
 
 }
-//void Employee::display_habitat_info() {}
 void Employee::display_employee_menu() {}; // dodane przez to ¿e funkcje nie s¹ ju¿ czysto wirtualne
 void Employee::display_tasks() {}; // dodane przez to ¿e funkcje nie s¹ ju¿ czysto wirtualne
 
