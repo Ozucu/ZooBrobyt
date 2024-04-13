@@ -33,6 +33,7 @@ class Animal_vector
 public:
 	Animal_vector(vector<unique_ptr<Animal>> = {});
 	void load_animal_data(string FileName);
+	void display_all_animals();
 	void add_animal(unique_ptr<Animal> animal);
 };
 

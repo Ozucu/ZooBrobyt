@@ -1,0 +1,2 @@
+Cluster;Kind;Name;Age;Date of last feeding; Weight; Date od arrival to zoo; In which habitat; Chip number; Is animal healthy; Amount of fish/invertebrate; Type of invertebrate; Subtype of invertebrate;Health booklet
+Fish;Gupik;;;10.10.1001;;11.11.1111;3;;YES;1000;wasnt sick

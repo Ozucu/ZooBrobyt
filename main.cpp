@@ -6,19 +6,23 @@
 
 Employee_vector list_of_employees;
 unique_ptr<Employee> director_ptr = make_unique<Director_of_the_zoo>("Director", "Director", "01.01.1010", "01.01.1010", "Director", 11);
-void start();
+void start_employees();
 void test_employee_vector();
 void test_director();
 
+Animal_vector list_of_animals;
+void test_animal_vector();
+void start_animals();
+
 int main() {
 	
-	start();
+	//start_employees();
 	//test_employee_vector();
-	test_director();
+	//test_director();
 	return 0;
 }
 
-void start() {
+void start_employees() {
 	cout << "START\n";
 	list_of_employees.load_employee_data("employees.csv");
 	cout << "WCZYTANI PRACOWNICY:\n";
@@ -42,5 +46,13 @@ void test_director() {
 	static_cast<Director_of_the_zoo*>(director_ptr.get())->display_employee_menu(move(list_of_employees));
 	
 }
+void start_animals() {
+	list_of_animals.load_animal_data("animals.txt");
+	list_of_animals.display_all_animals();
+}
+void test_animal_vector() {
+
+}
 //do dorobienia wy³apywanie z³ego typu pracownika i zamiana zookeeper na Zookeeper
 //na odwórt daæ freind class
+//zmiana displayu dla pracowników na Employee::
