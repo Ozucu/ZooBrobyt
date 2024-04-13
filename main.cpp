@@ -15,7 +15,7 @@ void test_animal_vector();
 void start_animals();
 
 int main() {
-	
+	start_animals();
 	//start_employees();
 	//test_employee_vector();
 	//test_director();

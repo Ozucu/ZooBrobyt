@@ -41,38 +41,38 @@ void Animal_vector::load_animal_data(string FileName) {
         if (data.size() > 0) {
             if (data[0] == "Reptile") {
                 vector<string> booklet;
-                copy(data.begin() + 10, data.end(), back_inserter(booklet));
-                list_of_animals.push_back(move(make_unique<Reptile>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], stoi(data[8]), data[9])));
+                copy(data.begin() + 9, data.end(), back_inserter(booklet));
+                list_of_animals.push_back(move(make_unique<Reptile>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], stoi(data[8]))));
 
             }
             else if (data[0] == "Mammal") {
                 vector<string> booklet;
-                copy(data.begin() + 10, data.end(), back_inserter(booklet));
-                list_of_animals.push_back(move(make_unique<Mammal>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], data[8], stoi(data[9]))));
+                copy(data.begin() + 9, data.end(), back_inserter(booklet));
+                list_of_animals.push_back(move(make_unique<Mammal>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], stoi(data[8]))));
 
             }
             else if (data[0] == "Amphibian") {
                 vector<string> booklet;
-                copy(data.begin() + 10, data.end(), back_inserter(booklet));
-                list_of_animals.push_back(move(make_unique<Amphibian>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], data[8], stoi(data[9]))));
+                copy(data.begin() + 9, data.end(), back_inserter(booklet));
+                list_of_animals.push_back(move(make_unique<Amphibian>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], stoi(data[8]))));
 
             }
             else if (data[0] == "Bird") {
                 vector<string> booklet;
-                copy(data.begin() + 10, data.end(), back_inserter(booklet));
-                list_of_animals.push_back(move(make_unique<Bird>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], data[8], stoi(data[9]))));
+                copy(data.begin() + 9, data.end(), back_inserter(booklet));
+                list_of_animals.push_back(move(make_unique<Bird>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], stoi(data[8]))));
 
             }
             else if (data[0] == "Fish") {
                 vector<string> booklet;
-                copy(data.begin() + 11, data.end(), back_inserter(booklet));
-                list_of_animals.push_back(move(make_unique<Fish>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], data[8], stoi(data[9]), stoi(data[10]))));
+                copy(data.begin() + 8, data.end(), back_inserter(booklet));
+                list_of_animals.push_back(move(make_unique<Fish>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], stoi(data[8]), data[9])));
 
             }
             else if (data[0] == "Invertebrate") {
                 vector<string> booklet;
-                copy(data.begin() + 13, data.end(), back_inserter(booklet));
-                list_of_animals.push_back(move(make_unique<Invertebrate>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], data[8], stoi(data[9]), stoi(data[10]), data[11], data[12])));
+                copy(data.begin() + 12, data.end(), back_inserter(booklet));
+                list_of_animals.push_back(move(make_unique<Invertebrate>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], stoi(data[8]), data[9], data[10], data[11])));
 
             }
            
