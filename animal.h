@@ -13,15 +13,15 @@ class Animal
 	int age;
 	string date_of_last_feeding;
 	float weight;
-	vector <string> health_booklet;
 	string date_of_arrival_to_zoo;
 	string in_which_habitat;
 	int chip_number;
-	bool is_animal_healthy;
+	string is_animal_healthy;
+	vector <string> health_booklet;
 
 public:
-	Animal(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0, bool = true);
-	bool will_animal_get_sick(int age, float weight, vector<string> health_booklet);
+	Animal(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, string = "unknown", string = "unknown", int = 0, string = "YES", vector<string> = {});
+	string will_animal_get_sick(int age, float weight, vector<string> health_booklet);
 	virtual void display_animal_info();
 	
 
@@ -41,7 +41,7 @@ class Reptile :public Animal
 {
 
 public:
-	Reptile(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0);
+	Reptile(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, string = "unknown", string = "unknown", int = 0, string = "YES", vector<string> = {});
 	virtual void display_animal_info();
 
 };
@@ -49,7 +49,7 @@ public:
 class Mammal :public Animal
 {
 public:
-	Mammal(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0);
+	Mammal(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, string = "unknown", string = "unknown", int = 0, string = "YES", vector<string> = {});
 	virtual void display_animal_info();
 
 };
@@ -57,7 +57,7 @@ public:
 class Amphibian :public Animal
 {
 public:
-	Amphibian(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0);
+	Amphibian(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, string = "unknown", string = "unknown", int = 0, string = "YES", vector<string> = {});
 	virtual void display_animal_info();
 
 };
@@ -65,7 +65,7 @@ public:
 class Bird :public Animal
 {
 public:
-	Bird(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0);
+	Bird(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, string = "unknown", string = "unknown", int = 0, string = "YES", vector<string> = {});
 	virtual void display_animal_info();
 };
 
@@ -73,7 +73,7 @@ class Fish :public Animal
 {
 	int amount_of_fish;
 public:
-	Fish(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0, int = 0);
+	Fish(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, string = "unknown", string = "unknown", int = 0, string = "YES", vector<string> = {}, int = 0);
 	virtual void display_animal_info();
 };
 
@@ -83,7 +83,7 @@ class Invertebrate :public Animal
 	string type; //miêczak / stawonóg
 	string subtype; // owad / pajêczak / skorupiak
 public:
-	Invertebrate(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, vector<string> = {}, string = "unknown", string = "unknown", int = 0, int = 0, string = "unknown", string = "unknown");
+	Invertebrate(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, string = "unknown", string = "unknown", int = 0, string = "YES", vector<string> = {}, int = 0, string = "unknown", string = "unknown");
 	virtual void display_animal_info();
 
 };
