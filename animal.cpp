@@ -66,13 +66,13 @@ void Animal_vector::load_animal_data(string FileName) {
             else if (data[0] == "Fish") {
                 vector<string> booklet;
                 copy(data.begin() + 8, data.end(), back_inserter(booklet));
-                list_of_animals.push_back(move(make_unique<Fish>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], stoi(data[8]), data[9])));
+                list_of_animals.push_back(move(make_unique<Fish>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], stoi(data[8]), stoi(data[9]))));
 
             }
             else if (data[0] == "Invertebrate") {
                 vector<string> booklet;
                 copy(data.begin() + 12, data.end(), back_inserter(booklet));
-                list_of_animals.push_back(move(make_unique<Invertebrate>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], stoi(data[8]), data[9], data[10], data[11])));
+                list_of_animals.push_back(move(make_unique<Invertebrate>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), booklet, data[6], data[7], stoi(data[8]), stoi(data[9]), data[10], data[11])));
 
             }
            
