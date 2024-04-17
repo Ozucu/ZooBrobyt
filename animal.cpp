@@ -81,7 +81,6 @@ void Animal_vector::load_animal_data(string FileName) {
         }
     }
 
-
     file.close();
 }
 void Animal_vector::display_all_animals() {
