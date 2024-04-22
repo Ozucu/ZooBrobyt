@@ -9,7 +9,7 @@ Employee::Employee(string Name, string Last_name, string Date_of_birth, string D
 	ID_number_of_employee = ID_Number_of_employee;
 }
 void Employee::display_employee_info() {
-    cout << "Name: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\n Date od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee << "\n\n";
+    cout << "Name: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\n Date od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee;
 }
 void Employee::get_stuff_from_warehouse() {
 
@@ -147,7 +147,8 @@ Manager_of_the_zoo::Manager_of_the_zoo(string Name, string Last_name, string Dat
     specialization = Specialization;
 }
 void Manager_of_the_zoo::display_employee_info() {
-    cout << "Name: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\n Date od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee << "\nSpecialization: " << specialization << "\n\n";
+    Employee::display_employee_info();
+    cout << "\nSpecialization: " << specialization << "\n\n";
 }
 void Manager_of_the_zoo::display_employee_menu() {
 
@@ -180,7 +181,8 @@ Zookeeper::Zookeeper(string Name, string Last_name, string Date_of_birth, string
     animal_under_care = Animal_under_care;
 }
 void Zookeeper::display_employee_info(){
-    cout << "Name: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\n Date od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee << "\nSpecialization: " << specialization << "Animals under care: ";
+    Employee::display_employee_info();
+    cout << "\nSpecialization: " << specialization << "\nAnimals under care: ";
     for (string animal : animal_under_care) cout << animal << " ";
     cout << "\n\n";
 }
@@ -217,7 +219,8 @@ Vet::Vet(string Name, string Last_name, string Date_of_birth, string Date_of_emp
     appointments = Appointments;
 }
 void Vet::display_employee_info() {
-    cout << "Name: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\nDate od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee << "\nSpecialization: " << specialization<<"\n\n";
+    Employee::display_employee_info();
+    cout << "\nSpecialization: " << specialization<<"\n\n";
 }
 void Vet::display_tasks() {
     system("cls");
