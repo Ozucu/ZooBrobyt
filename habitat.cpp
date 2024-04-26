@@ -32,18 +32,20 @@ void Habitat_vector::load_habitat_data(string FileName) {
         int number_of_animals;
         vector<string> data;
         vector<string> names;
+        vector <string> notes;
         vector<int> chip_numbers;
         while (getline(ss, token, ';')) {
             data.push_back(token);
         }
         if (data.size() > 0) {
             number_of_animals = stoi(data[2]);
-            for (int i = number_of_animals; i < 2 * number_of_animals; i++) {
+            for (int i = 5; i < 5 + number_of_animals; i++) {
                 names.push_back(data[i]);
-                chip_numbers.push_back(stoi(data[2 * i + 1])); //bêdzie skaka³o 1 3 5
+                chip_numbers.push_back(stoi(data[i + number_of_animals]));
             }
+            notes.push_back(data[4]);
         }
-        list_of_habitats.push_back(move(make_unique<Habitat>(stof(data[0]), data[1], number_of_animals, names, chip_numbers, data[3], data[4])));
+        list_of_habitats.push_back(move(make_unique<Habitat>(stof(data[0]), data[1], number_of_animals, names, chip_numbers, data[3], notes)));
     }
 
     file.close();

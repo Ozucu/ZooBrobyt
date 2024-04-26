@@ -21,7 +21,8 @@ int main() {
 	//start_animals();
 	//start_employees();
 	//test_employee_vector();
-	test_director();
+	//test_director();
+	start_habitats();
 	return 0;
 }
 
