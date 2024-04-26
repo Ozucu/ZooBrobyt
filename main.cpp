@@ -14,11 +14,14 @@ Animal_vector list_of_animals;
 void test_animal_vector();
 void start_animals();
 
+Habitat_vector list_of_habitats;
+void start_habitats();
+
 int main() {
 	//start_animals();
-	start_employees();
+	//start_employees();
 	//test_employee_vector();
-	//test_director();
+	test_director();
 	return 0;
 }
 
@@ -52,6 +55,10 @@ void start_animals() {
 }
 void test_animal_vector() {
 
+}
+void start_habitats() {
+	list_of_habitats.load_habitat_data("habitats.txt");
+	list_of_habitats.display_all_habitats_info();
 }
 //do dorobienia wy³apywanie z³ego typu pracownika i zamiana zookeeper na Zookeeper
 //na odwórt daæ freind class

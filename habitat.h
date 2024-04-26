@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include<fstream>
+#include<sstream>
 #include <vector>
 using namespace std;
 class Habitat
@@ -14,8 +16,15 @@ class Habitat
 
 public:
 	Habitat(float = 0, string = "unknown", int = 0, vector<string> = {}, vector<int> = {}, string = "unknown", vector<string> = {});
-	void load_habitat_data(string FileName);
 	void display_habitat_info();
 
+};
+class Habitat_vector
+{
+	vector<unique_ptr<Habitat>> list_of_habitats;
+
+public:
+	void load_habitat_data(string FileName);
+	void display_all_habitats_info();
 };
 

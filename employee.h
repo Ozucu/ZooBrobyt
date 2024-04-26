@@ -18,6 +18,7 @@ protected:
 
 public:
 	Employee(string = "unknown", string = "unknown", string = "unknown", string = "unknown", string = "unknown", int = 0);
+	//wirtualny destruktor dla klasy bazowej
 	//void display_warehouse_info();
 	void get_stuff_from_warehouse();
 	//void display_habitat_info();

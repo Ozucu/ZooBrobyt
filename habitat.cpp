@@ -9,3 +9,45 @@ Habitat::Habitat(float Surface, string Species_living_in_habitat, int Number_of_
 	type_of_habitat = Type_of_habitat;
 	notes_for_habitat = Notes_for_habitat;
 }
+void Habitat::display_habitat_info() {
+    cout << "Surface: " << surface << "\nSpecies living in habitat: " << species_living_in_habitat << "\nNames of animals: ";
+    for (auto name_of_animal : names_of_living_animals) cout << name_of_animal << " ";
+    cout << "\nAnimals chips: ";
+    for (auto number : numbers_of_chips_of_living_animals) cout << number << " ";
+    cout << "\nType of habitat: " << type_of_habitat << "\nNotes for habitat: ";
+    for (auto note : notes_for_habitat) cout << note << " ";
+}
+void Habitat_vector::load_habitat_data(string FileName) {
+    ifstream file(FileName);
+    if (!file.is_open()) {
+        cerr << "Nie mo¿na otworzyæ pliku." << endl;
+        return;
+    }
+
+    string line;
+    getline(file, line); // headline
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string token;
+        int number_of_animals;
+        vector<string> data;
+        vector<string> names;
+        vector<int> chip_numbers;
+        while (getline(ss, token, ';')) {
+            data.push_back(token);
+        }
+        if (data.size() > 0) {
+            number_of_animals = stoi(data[2]);
+            for (int i = number_of_animals; i < 2 * number_of_animals; i++) {
+                names.push_back(data[i]);
+                chip_numbers.push_back(stoi(data[2 * i + 1])); //bêdzie skaka³o 1 3 5
+            }
+        }
+        list_of_habitats.push_back(move(make_unique<Habitat>(stof(data[0]), data[1], number_of_animals, names, chip_numbers, data[3], data[4])));
+    }
+
+    file.close();
+}
+void Habitat_vector::display_all_habitats_info() {
+    for (auto& habitat : list_of_habitats) habitat->display_habitat_info();
+}

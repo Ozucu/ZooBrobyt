@@ -22,7 +22,7 @@ void Employee::display_tasks() {}; // dodane przez to ¿e funkcje nie s¹ ju¿ czys
 //    list_of_employees = move(List_of_employees);
 //}
 Employee_vector::Employee_vector(vector<unique_ptr<Employee>>&& List_of_employees) //przenoszenie bez kopiowania (zawartoœci wektora)
-    : list_of_employees(std::move(List_of_employees)) {
+    : list_of_employees(move(List_of_employees)) {
 }
 void Employee_vector::load_employee_data(string FileName) {
 

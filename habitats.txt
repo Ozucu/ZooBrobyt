@@ -1,0 +1,2 @@
+Powierzchnia;Gatunek zamieszkujący habitat;Liczba osobników;Typ habitatu;Notatki dla habitatu;Imiona zwierząt;Numery chipów;
+10.5;Lwy;3;Rowniny;Brak;Lef;Lefka1;Lefka2;1;2;3;
