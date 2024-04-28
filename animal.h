@@ -3,6 +3,7 @@
 #include <vector>
 #include <fstream>
 #include<sstream>
+#include "habitat.h"
 using namespace std;
 
 class Animal
@@ -19,6 +20,9 @@ class Animal
 	string is_animal_healthy;
 	vector <string> health_booklet;
 
+	friend class Habitat;
+
+
 public:
 	Animal(string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", float = 0, string = "unknown", string = "unknown", int = 0, string = "YES", vector<string> = {});
 	string will_animal_get_sick(int age, float weight, vector<string> health_booklet);
@@ -34,7 +38,7 @@ public:
 	Animal_vector(vector<unique_ptr<Animal>> = {});
 	void load_animal_data(string FileName);
 	void display_all_animals();
-	void add_animal(unique_ptr<Animal> animal);
+	void add_animal_to_animal_vector(Habitat_vector& list_of_habitats);
 };
 
 class Reptile :public Animal

@@ -17,15 +17,25 @@ void start_animals();
 Habitat_vector list_of_habitats;
 void start_habitats();
 
+void test();
 int main() {
 	//start_animals();
 	//start_employees();
 	//test_employee_vector();
 	//test_director();
-	start_habitats();
+	//start_habitats();
+	test();
 	return 0;
 }
-
+void test() {
+	list_of_animals.load_animal_data("animals.txt");
+	list_of_animals.display_all_animals();
+	list_of_habitats.load_habitat_data("habitats.txt");
+	list_of_habitats.display_all_habitats_info();
+	list_of_animals.add_animal_to_animal_vector(list_of_habitats);
+	list_of_animals.display_all_animals();
+	list_of_habitats.display_all_habitats_info();
+}
 void start_employees() {
 	cout << "START\n";
 	list_of_employees.load_employee_data("employees.csv");

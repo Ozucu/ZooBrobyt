@@ -17,20 +17,10 @@ void Habitat::display_habitat_info() {
     cout << "\nType of habitat: " << type_of_habitat << "\nNotes for habitat: ";
     for (auto note : notes_for_habitat) cout << note << " ";
 }
-void Habitat::add_animal() {
-
-}
-void Habitat::remove_animal() {
-
-}
-void Habitat::move_animal() {
-    string name;
-    int number;
-    
-    cout << "Choose name of animal to move: ";
-    cin >> name;
-    cout << "Choose number of habitat to move in: ";
-    cin >> number;
+void Habitat::add_animal_to_habitat_vector(unique_ptr<Animal> new_animal) {
+    number_of_living_animals++;
+    names_of_living_animals.push_back(new_animal->name);
+    numbers_of_chips_of_living_animals.push_back(new_animal->chip_number);
 }
 
 void Habitat_vector::load_habitat_data(string FileName) {

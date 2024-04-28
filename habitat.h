@@ -3,6 +3,7 @@
 #include<fstream>
 #include<sstream>
 #include <vector>
+#include "animal.h"
 using namespace std;
 class Habitat
 {
@@ -17,15 +18,17 @@ class Habitat
 public:
 	Habitat(float = 0, string = "unknown", int = 0, vector<string> = {}, vector<int> = {}, string = "unknown", vector<string> = {});
 	void display_habitat_info();
-	void add_animal();
-	void remove_animal();
-	void move_animal();
+	void add_animal_to_habitat_vector(unique_ptr<Animal> new_animal);
+	//void remove_animal();
+	//void move_animal();
 
 };
 class Habitat_vector
 {
 	vector<unique_ptr<Habitat>> list_of_habitats;
 	friend class Habitat;
+	friend class Animal_vector;
+
 public:
 	void load_habitat_data(string FileName);
 	void display_all_habitats_info();
