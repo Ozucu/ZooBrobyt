@@ -17,6 +17,22 @@ void Habitat::display_habitat_info() {
     cout << "\nType of habitat: " << type_of_habitat << "\nNotes for habitat: ";
     for (auto note : notes_for_habitat) cout << note << " ";
 }
+void Habitat::add_animal() {
+
+}
+void Habitat::remove_animal() {
+
+}
+void Habitat::move_animal() {
+    string name;
+    int number;
+    
+    cout << "Choose name of animal to move: ";
+    cin >> name;
+    cout << "Choose number of habitat to move in: ";
+    cin >> number;
+}
+
 void Habitat_vector::load_habitat_data(string FileName) {
     ifstream file(FileName);
     if (!file.is_open()) {
@@ -39,11 +55,13 @@ void Habitat_vector::load_habitat_data(string FileName) {
         }
         if (data.size() > 0) {
             number_of_animals = stoi(data[2]);
-            for (int i = 5; i < 5 + number_of_animals; i++) {
+            for (int i = 4; i < 4 + number_of_animals; i++) {
                 names.push_back(data[i]);
                 chip_numbers.push_back(stoi(data[i + number_of_animals]));
             }
-            notes.push_back(data[4]);
+            for (int i = 4 + 2 * number_of_animals; i < data.size(); i++) {
+                notes.push_back(data[i]);
+            }
         }
         list_of_habitats.push_back(move(make_unique<Habitat>(stof(data[0]), data[1], number_of_animals, names, chip_numbers, data[3], notes)));
     }
