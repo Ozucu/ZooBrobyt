@@ -6,8 +6,11 @@
 #include "habitat.h"
 using namespace std;
 
+class Habitat_vector;
+
 class Animal
 {
+protected:
 	string cluster;
 	string kind;
 	string name;
@@ -20,7 +23,7 @@ class Animal
 	string is_animal_healthy;
 	vector <string> health_booklet;
 
-	friend class Habitat;
+	friend class Habitat_vector;
 
 
 public:
@@ -34,6 +37,7 @@ public:
 class Animal_vector
 {
 	vector<unique_ptr<Animal>> list_of_animals;
+	friend class Habitat;
 public:
 	Animal_vector(vector<unique_ptr<Animal>> = {});
 	void load_animal_data(string FileName);

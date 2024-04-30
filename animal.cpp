@@ -71,7 +71,7 @@ void Animal_vector::load_animal_data(string FileName) {
             }
             else if (data[0] == "Invertebrate") {
                 vector<string> booklet;
-                copy(data.begin() + 12, data.end(), back_inserter(booklet));
+                copy(data.begin() + 13, data.end(), back_inserter(booklet));
                 list_of_animals.push_back(move(make_unique<Invertebrate>(data[0], data[1], data[2], stoi(data[3]), data[4], stoi(data[5]), data[6], data[7], stoi(data[8]), data[9], booklet, stoi(data[10]), data[11], data[12])));
 
             }
@@ -99,10 +99,12 @@ void Animal_vector::add_animal_to_animal_vector(Habitat_vector& list_of_habitats
     string is_animal_healthy;
     vector<string> health_booklet;
     string health_note = "1";
-    cout << "Cluster of animal: ";
+    cout << "\n\nCluster of animal: ";
     cin >> cluster;
     cout << "Kind: ";
     cin >> kind;
+    cout << "Name: ";
+    cin >> name;
     cout << "Age: ";
     cin >> age;
     cout << "Date od last feeding: ";
@@ -123,15 +125,15 @@ void Animal_vector::add_animal_to_animal_vector(Habitat_vector& list_of_habitats
         health_booklet.push_back(health_note);
     }
     unique_ptr<Animal> animal;
-    if (cluster == "Reptile") animal = make_unique<Reptile>(cluster, kind, age,date_of_feeding,weight,date_of_arrival,in_which,chip_number,is_animal_healthy,health_booklet);
-    else if (cluster == "Mammal") animal = make_unique<Mammal>(cluster, kind, age, date_of_feeding, weight, date_of_arrival, in_which, chip_number, is_animal_healthy, health_booklet);
-    else if (cluster == "Amphibian") animal = make_unique<Amphibian>(cluster, kind, age, date_of_feeding, weight, date_of_arrival, in_which, chip_number, is_animal_healthy, health_booklet);
-    else if (cluster == "Bird") animal = make_unique<Bird>(cluster, kind, age, date_of_feeding, weight, date_of_arrival, in_which, chip_number, is_animal_healthy, health_booklet);
+    if (cluster == "Reptile") animal = make_unique<Reptile>(cluster, kind, name, age,date_of_feeding,weight,date_of_arrival,in_which,chip_number,is_animal_healthy,health_booklet);
+    else if (cluster == "Mammal") animal = make_unique<Mammal>(cluster, kind, name, age, date_of_feeding, weight, date_of_arrival, in_which, chip_number, is_animal_healthy, health_booklet);
+    else if (cluster == "Amphibian") animal = make_unique<Amphibian>(cluster, kind, name, age, date_of_feeding, weight, date_of_arrival, in_which, chip_number, is_animal_healthy, health_booklet);
+    else if (cluster == "Bird") animal = make_unique<Bird>(cluster, kind, name, age, date_of_feeding, weight, date_of_arrival, in_which, chip_number, is_animal_healthy, health_booklet);
     else if (cluster == "Fish") {
         int amount_of_fish;
         cout << "Amount of fish: ";
         cin >> amount_of_fish;
-        animal = make_unique<Fish>(cluster, kind, age, date_of_feeding, weight, date_of_arrival, in_which, chip_number, is_animal_healthy, health_booklet, amount_of_fish);
+        animal = make_unique<Fish>(cluster, kind, name, age, date_of_feeding, weight, date_of_arrival, in_which, chip_number, is_animal_healthy, health_booklet, amount_of_fish);
     }
     else if (cluster == "Invertebrate") {
         int amount_of_invertebrate;
@@ -147,9 +149,12 @@ void Animal_vector::add_animal_to_animal_vector(Habitat_vector& list_of_habitats
     }
     else cerr << "Unknown type od animal.";
 	list_of_animals.push_back(move(animal));
-    list_of_habitats.list_of_habitats[stoi(in_which)]->add_animal_to_habitat_vector(move(animal));
-    
-	for (const auto& animal_ptr : list_of_animals) animal_ptr->display_animal_info();
+    // Uzyskanie referencji do listy habitatów
+    vector<unique_ptr<Habitat>>& habitats = list_of_habitats.list_of_habitats;
+
+    // Przekazanie unikalnego wskaŸnika za pomoc¹ std::move
+    list_of_habitats.add_animal_to_habitat_vector(move(animal));
+    display_all_animals();
 
 }
 //---------------------------------------------------------------REPTILE-----------------------------------------------------------------------------

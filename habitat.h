@@ -5,8 +5,12 @@
 #include <vector>
 #include "animal.h"
 using namespace std;
+
+class Animal;
+
 class Habitat
 {
+protected:
 	float surface;
 	string species_living_in_habitat;
 	int number_of_living_animals;
@@ -14,11 +18,12 @@ class Habitat
 	vector<int> numbers_of_chips_of_living_animals;
 	string type_of_habitat;
 	vector<string> notes_for_habitat;
+	friend class Habitat_vector;
 
 public:
 	Habitat(float = 0, string = "unknown", int = 0, vector<string> = {}, vector<int> = {}, string = "unknown", vector<string> = {});
 	void display_habitat_info();
-	void add_animal_to_habitat_vector(unique_ptr<Animal> new_animal);
+
 	//void remove_animal();
 	//void move_animal();
 
@@ -26,12 +31,11 @@ public:
 class Habitat_vector
 {
 	vector<unique_ptr<Habitat>> list_of_habitats;
-	friend class Habitat;
 	friend class Animal_vector;
 
 public:
 	void load_habitat_data(string FileName);
 	void display_all_habitats_info();
-
+	void add_animal_to_habitat_vector(unique_ptr<Animal> new_animal);
 };
 
