@@ -150,10 +150,10 @@ void Animal_vector::add_animal_to_animal_vector(Habitat_vector& list_of_habitats
     else cerr << "Unknown type od animal.";
 	list_of_animals.push_back(move(animal));
     // Uzyskanie referencji do listy habitatów
-    vector<unique_ptr<Habitat>>& habitats = list_of_habitats.list_of_habitats;
+    //vector<unique_ptr<Habitat>>& habitats = list_of_habitats.list_of_habitats;
 
     // Przekazanie unikalnego wskaŸnika za pomoc¹ std::move
-    list_of_habitats.add_animal_to_habitat_vector(move(animal));
+    list_of_habitats.add_animal_to_habitat_vector(move(animal)); // ten animal jest pusty bo move przeniós³
     display_all_animals();
 
 }
