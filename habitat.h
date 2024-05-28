@@ -36,6 +36,6 @@ class Habitat_vector
 public:
 	void load_habitat_data(string FileName);
 	void display_all_habitats_info();
-	void add_animal_to_habitat_vector(unique_ptr<Animal> new_animal);
+	void add_animal_to_habitat_vector(const vector<unique_ptr<Animal>>* list_of_animals_ptr);
 };
 
