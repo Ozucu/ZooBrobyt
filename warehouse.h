@@ -9,7 +9,7 @@ protected:
 	string type_of_product;
 	int amount;
 	string expiration_date;
-	string date_of_receipt; //w sensie kiedy towar przyjecha³ ¿eby policzyæ jego przydatnoœæ do podania zwierzakom
+
 public:
 	Food(string = "unknown", int = 0, string = "unknown", string = "unknown");
 	virtual ~Food() = default;
