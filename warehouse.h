@@ -6,12 +6,12 @@ class Food
 {
 	friend class Warehouse;
 protected:
-	string type_of_product;
-	int amount;
-	string expiration_date;
+	vector<string> type_of_product;
+	vector<int> amount;
+	vector<string> expiration_date;
 
 public:
-	Food(string = "unknown", int = 0, string = "unknown", string = "unknown");
+	Food(vector<string> = {}, vector<int> = {}, vector<string> = {});
 	virtual ~Food() = default;
 
 };
@@ -28,12 +28,12 @@ public:
 class Meat :public Food
 {
 public:
-	Meat(string = "unknown", int = 0, string = "unknown", string = "unknown");
+	Meat(vector<string> = {}, vector<int> = {}, vector<string> = {});
 
 };
 class Plant_food :public Food
 {
 public:
-	Plant_food(string = "unknown", int = 0, string = "unknown", string = "unknown");
+	Plant_food(vector<string> = {}, vector<int> = {}, vector<string> = {});
 
 };

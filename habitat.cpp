@@ -18,15 +18,15 @@ void Habitat::display_habitat_info() {
     for (auto note : notes_for_habitat) cout << note << " ";
 }
 
-void Habitat_vector::add_animal_to_habitat_vector(const vector<unique_ptr<Animal>>* list_of_animals_ptr) {
+void Habitat_vector::add_animal_to_habitat_vector(string name, int chip, string in_which) {
     if (!list_of_habitats.empty()) {
         // Pobranie wskaŸnika do pierwszego habitatu na liœcie
-        Habitat* habitat_ptr = list_of_habitats[stoi()].get();
+        Habitat* habitat_ptr = list_of_habitats[stoi(in_which)].get();
 
         // Dodanie zwierzêcia do odpowiednich zmiennych sk³adowych wewn¹trz habitatu
         habitat_ptr->number_of_living_animals++;
-        habitat_ptr->names_of_living_animals.push_back(new_animal->name);
-        habitat_ptr->numbers_of_chips_of_living_animals.push_back(new_animal->chip_number);
+        habitat_ptr->names_of_living_animals.push_back(name);
+        habitat_ptr->numbers_of_chips_of_living_animals.push_back(chip);
 
         cout << "Animal added to habitat." << endl;
     }

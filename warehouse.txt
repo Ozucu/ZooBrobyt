@@ -1,0 +1,6 @@
+Type of product;Amount;Expiration date
+Chicken;10;10.10.1111
+Beef;11;11.11.1111
+Pork;12;11.11.1111
+Fruits;111;12;12;1111
+Vegetables;112;14.14.1111
