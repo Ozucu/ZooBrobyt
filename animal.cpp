@@ -153,6 +153,37 @@ void Animal_vector::add_animal_to_animal_vector(Habitat_vector& list_of_habitats
     display_all_animals();
 
 }
+void Animal_vector::remove_animal_from_animal_vector(Habitat_vector& list_of_habitats) {
+    int chip;
+    cout << "Animal's chip ID: ";
+    cin >> chip;
+
+    for (auto animal = list_of_animals.begin(); animal != list_of_animals.end(); ++animal) {
+        if ((*animal)->chip_number == chip) {
+            // Remove animal from its habitat
+            for (auto& habitat : list_of_habitats.list_of_habitats) {
+                auto& names = habitat->names_of_living_animals;
+                auto& chips = habitat->numbers_of_chips_of_living_animals;
+                for (size_t i = 0; i < chips.size(); ++i) {
+                    if (chips[i] == chip) {
+                        names.erase(names.begin() + i);
+                        chips.erase(chips.begin() + i);
+                        habitat->number_of_living_animals--;
+                        break;
+                    }
+                }
+            }
+
+            // Remove the animal from the list
+            list_of_animals.erase(animal);
+            cout << "Animal with chip " << chip << " removed from the vector." << endl;
+            return;
+        }
+    }
+
+    cerr << "No animal with chip " << chip << " found." << endl;
+
+}
 //---------------------------------------------------------------REPTILE-----------------------------------------------------------------------------
 Reptile::Reptile(string Cluster, string Kind, string Name, int Age, string Date_of_feeding, float Weight, string Date_of_arrival, string in_which, int Chip_number, string Is_animal_healthy, vector<string> Health_booklet) : Animal(Cluster, Kind, Name, Age, Date_of_feeding, Weight, Date_of_arrival, in_which, Chip_number, Is_animal_healthy, Health_booklet) {
 

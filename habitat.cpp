@@ -20,10 +20,8 @@ void Habitat::display_habitat_info() {
 
 void Habitat_vector::add_animal_to_habitat_vector(string name, int chip, string in_which) {
     if (!list_of_habitats.empty()) {
-        // Pobranie wskaŸnika do pierwszego habitatu na liœcie
         Habitat* habitat_ptr = list_of_habitats[stoi(in_which)].get();
 
-        // Dodanie zwierzêcia do odpowiednich zmiennych sk³adowych wewn¹trz habitatu
         habitat_ptr->number_of_living_animals++;
         habitat_ptr->names_of_living_animals.push_back(name);
         habitat_ptr->numbers_of_chips_of_living_animals.push_back(chip);

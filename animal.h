@@ -24,6 +24,7 @@ protected:
 	vector <string> health_booklet;
 
 	friend class Habitat_vector;
+	friend class Animal_vector;
 
 
 public:
@@ -43,6 +44,7 @@ public:
 	void load_animal_data(string FileName);
 	void display_all_animals();
 	void add_animal_to_animal_vector(Habitat_vector& list_of_habitats);
+	void remove_animal_from_animal_vector(Habitat_vector& list_of_habitats);
 };
 
 class Reptile :public Animal

@@ -18,7 +18,9 @@ protected:
 	vector<int> numbers_of_chips_of_living_animals;
 	string type_of_habitat;
 	vector<string> notes_for_habitat;
+
 	friend class Habitat_vector;
+	friend class Animal_vector;
 
 public:
 	Habitat(float = 0, string = "unknown", int = 0, vector<string> = {}, vector<int> = {}, string = "unknown", vector<string> = {});
