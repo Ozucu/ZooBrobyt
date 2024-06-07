@@ -39,12 +39,13 @@ class Animal_vector
 {
 	vector<unique_ptr<Animal>> list_of_animals;
 	friend class Habitat;
+	friend class Zookeeper;
 public:
 	Animal_vector(vector<unique_ptr<Animal>> = {});
 	void load_animal_data(string FileName);
 	void display_all_animals();
 	void add_animal_to_animal_vector(Habitat_vector& list_of_habitats);
-	void remove_animal_from_animal_vector(Habitat_vector& list_of_habitats);
+	void remove_animal(Habitat_vector& list_of_habitats);
 };
 
 class Reptile :public Animal

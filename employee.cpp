@@ -1,4 +1,5 @@
 #include "employee.h"
+#include "animal.h"
 //--------------------------------------------------------------EMPLOYEE-----------------------------------------------------------------------
 Employee::Employee(string Name, string Last_name, string Date_of_birth, string Date_of_employment, string Position, int ID_Number_of_employee) {
 	name = Name;
@@ -202,8 +203,17 @@ void Zookeeper::display_tasks() {
     system("cls");
     cout << "As an zookeeper you can :\n1. Feed an animal.\n2. Make an appointment with the vet.\n3. Take animal for quarantine.\n";
 }
-void Zookeeper::feed_animal() {
+void Zookeeper::feed_animal(Animal_vector& list_of_animals) {
+    list_of_animals.display_all_animals();
+    int id_animal_to_feed;
+    string date_of_feeding;
+    cout << "Chip ID of animal to feed: ";
+    cin >> id_animal_to_feed;
+    cout << "Date od feeding: ";
+    cin >> date_of_feeding;
+    for (auto animal = list_of_animals.begin(); animal != list_of_animals.end(); ++animal) {
 
+    }
 }
 void Zookeeper::make_an_appointment_with_the_vet() {
 

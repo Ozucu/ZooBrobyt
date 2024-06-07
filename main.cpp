@@ -32,9 +32,12 @@ void test() {
 	list_of_animals.display_all_animals();
 	list_of_habitats.load_habitat_data("habitats.txt");
 	list_of_habitats.display_all_habitats_info();
-	list_of_animals.add_animal_to_animal_vector(list_of_habitats);
-	list_of_animals.display_all_animals();
-	list_of_habitats.display_all_habitats_info();
+	//list_of_animals.add_animal_to_animal_vector(list_of_habitats);
+	//list_of_animals.display_all_animals();
+	//list_of_habitats.display_all_habitats_info();
+	//list_of_animals.remove_animal(list_of_habitats);
+	//list_of_animals.display_all_animals();
+	//list_of_habitats.display_all_habitats_info();
 }
 void start_employees() {
 	cout << "START\n";

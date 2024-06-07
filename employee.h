@@ -75,16 +75,16 @@ class Zookeeper :public Employee
 	string specialization;
 	vector<string> animal_under_care;
 
-	friend class Animal;
-	friend class Warehouse;
-	friend class Habitat;
+	//friend class Animal;
+	//friend class Warehouse;
+	//friend class Habitat;
 
 public:
 	Zookeeper(string = "unknown", string = "unknown", string = "unknown", string = "unknown", string = "unknown", int = 0, string = "unknown", vector<string> = {});
 	virtual void display_tasks();
 	virtual void display_employee_menu();
 	virtual void display_employee_info();
-	void feed_animal();
+	void feed_animal(Animal_vector& list_of_animals);
 	void make_an_appointment_with_the_vet();
 	void take_animal_for_quarantine();
 

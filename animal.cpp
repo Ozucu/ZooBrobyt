@@ -153,7 +153,7 @@ void Animal_vector::add_animal_to_animal_vector(Habitat_vector& list_of_habitats
     display_all_animals();
 
 }
-void Animal_vector::remove_animal_from_animal_vector(Habitat_vector& list_of_habitats) {
+void Animal_vector::remove_animal(Habitat_vector& list_of_habitats) {
     int chip;
     cout << "Animal's chip ID: ";
     cin >> chip;
