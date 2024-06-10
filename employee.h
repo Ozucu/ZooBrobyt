@@ -39,7 +39,7 @@ public:
 	void display_all_employees();
 	void add_employee(unique_ptr<Employee> employee);
 	void remove_employee(size_t index);
-
+	Employee* get_employee(size_t index);
 };
 
 class Director_of_the_zoo :public Employee
@@ -84,7 +84,7 @@ public:
 	virtual void display_tasks();
 	virtual void display_employee_menu();
 	virtual void display_employee_info();
-	void feed_animal(Animal_vector& list_of_animals);
+	//void feed_animal(Animal_vector& list_of_animals);
 	void make_an_appointment_with_the_vet();
 	void take_animal_for_quarantine();
 

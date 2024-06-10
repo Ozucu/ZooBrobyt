@@ -18,13 +18,15 @@ Habitat_vector list_of_habitats;
 void start_habitats();
 
 void test();
+void menu();
 int main() {
 	//start_animals();
 	//start_employees();
 	//test_employee_vector();
 	//test_director();
 	//start_habitats();
-	test();
+	//test();
+	menu();
 	return 0;
 }
 void test() {
@@ -73,6 +75,30 @@ void test_animal_vector() {
 void start_habitats() {
 	list_of_habitats.load_habitat_data("habitats.txt");
 	list_of_habitats.display_all_habitats_info();
+}
+void menu() {
+	list_of_animals.load_animal_data("animals.txt");
+	list_of_employees.load_employee_data("employees.txt");
+	list_of_habitats.load_habitat_data("habitats.txt");
+	Employee* employee_ptr = nullptr;
+	cout << "Prosze wybrac pracownika: \n1. Dyrektor zoo.\n2. Zarzadca zoo.\n3. Opiekun zwierzat.\n4. Weterynarz.\n0. Wyjscie.\nPracownik nr: ";
+	int choice;
+	cin >> choice;
+	switch (choice) {
+		case 0:
+			return;
+		case 1:
+			employee_ptr = list_of_employees.get_employee(0);
+			employee_ptr->display_employee_info();
+			employee_ptr->display_employee_menu();
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+	}
 }
 //do dorobienia wy³apywanie z³ego typu pracownika i zamiana zookeeper na Zookeeper
 //na odwórt daæ freind class

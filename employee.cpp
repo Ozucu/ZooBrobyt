@@ -76,6 +76,12 @@ void Employee_vector::remove_employee(size_t index) {
     }
     list_of_employees.erase(list_of_employees.begin() + index);
 }
+Employee* Employee_vector::get_employee(size_t index) {
+    if (index < list_of_employees.size()) {
+        return list_of_employees[index].get();
+    }
+    return nullptr;
+}
 
 //-------------------------------------------------------- DIRECTOR ---------------------------------------------------------------
 Director_of_the_zoo::Director_of_the_zoo(string Name, string Last_name, string Date_of_birth, string Date_of_employment, string Position, int ID_Number_of_employee) : Employee(Name, Last_name, Date_of_birth, Date_of_employment, Position, ID_Number_of_employee) {
@@ -193,7 +199,7 @@ void Zookeeper::display_employee_menu() {
         display_tasks();
         cout << "Your choice (0 to escape): ";
         cin >> choice;
-        if (choice == 1) feed_animal();
+        if (choice == 1); //feed_animal();
         else if (choice == 2) make_an_appointment_with_the_vet();
         else if (choice == 3) take_animal_for_quarantine();
         else if (choice != 0) cerr << "Wrong number";
@@ -203,7 +209,7 @@ void Zookeeper::display_tasks() {
     system("cls");
     cout << "As an zookeeper you can :\n1. Feed an animal.\n2. Make an appointment with the vet.\n3. Take animal for quarantine.\n";
 }
-void Zookeeper::feed_animal(Animal_vector& list_of_animals) {
+/*void Zookeeper::feed_animal(Animal_vector& list_of_animals) {
     list_of_animals.display_all_animals();
     int id_animal_to_feed;
     string date_of_feeding;
@@ -211,10 +217,11 @@ void Zookeeper::feed_animal(Animal_vector& list_of_animals) {
     cin >> id_animal_to_feed;
     cout << "Date od feeding: ";
     cin >> date_of_feeding;
-    for (auto animal = list_of_animals.begin(); animal != list_of_animals.end(); ++animal) {
+    //for (auto animal = list_of_animals.begin(); animal != list_of_animals.end(); ++animal) {
 
-    }
+    //}
 }
+*/
 void Zookeeper::make_an_appointment_with_the_vet() {
 
 }
