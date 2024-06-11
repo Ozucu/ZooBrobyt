@@ -5,7 +5,7 @@
 #include<vector>
 #include<string>
 using namespace std;
-
+class Employee_vector;
 class Employee
 {
 protected:
@@ -25,6 +25,8 @@ public:
 	virtual void display_employee_info();
 	virtual void display_tasks(); // problem gdy zmienie z wirtualnej na czysto wirtualn¹ poprzez dodanie = 0
 	virtual void display_employee_menu(); // problem gdy zmienie z wirtualnej na czysto wirtualn¹ poprzez dodanie = 0
+	virtual void display_director_menu(Employee_vector& list_of_employees);
+
 
 };
 
@@ -48,12 +50,11 @@ class Director_of_the_zoo :public Employee
 	friend class Animal;
 	friend class Warehouse;
 	friend class Habitat;
-	Employee_vector* employees_vector;
 	//friend class Employee_vector;
 public:
 	Director_of_the_zoo(string = "unknown", string = "unknown", string = "unknown", string = "unknown", string = "unknown", int = 0);
 	virtual void display_tasks();
-	virtual void display_employee_menu();// (Employee_vector list_of_employees);
+	virtual void display_director_menu(Employee_vector& list_of_employees);
 
 };
 

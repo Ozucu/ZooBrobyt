@@ -81,13 +81,12 @@ void menu() {
 	list_of_employees.load_employee_data("employees.csv");
 	list_of_habitats.load_habitat_data("habitats.txt");
 	Employee* employee_ptr = nullptr;
-	list_of_employees.display_all_employees();
 	cout << "Prosze wybrac pracownika: \n1. Dyrektor zoo.\n2. Zarzadca zoo.\n3. Opiekun zwierzat.\n4. Weterynarz.\n0. Wyjscie.\nPracownik nr: ";
 	int choice;
 	cin >> choice;
 	employee_ptr = list_of_employees.get_employee(choice - 1);
 	employee_ptr->display_employee_info();
-	employee_ptr->display_employee_menu();
+	employee_ptr->display_director_menu(list_of_employees);
 }
 //do dorobienia wy³apywanie z³ego typu pracownika i zamiana zookeeper na Zookeeper
 //na odwórt daæ freind class

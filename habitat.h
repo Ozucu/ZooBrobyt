@@ -34,6 +34,7 @@ class Habitat_vector
 {
 	vector<unique_ptr<Habitat>> list_of_habitats;
 	friend class Animal_vector;
+	friend class Director_of_the_zoo;
 
 public:
 	void load_habitat_data(string FileName);

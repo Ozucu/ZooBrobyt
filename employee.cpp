@@ -10,13 +10,14 @@ Employee::Employee(string Name, string Last_name, string Date_of_birth, string D
 	ID_number_of_employee = ID_Number_of_employee;
 }
 void Employee::display_employee_info() {
-    cout << "Name: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\n Date od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee;
+    cout << "Name: " << name << "\nLast name: " << last_name << "\nDate of birth: " << date_of_birth << "\n Date od employment: " << date_of_employment << "\nPosition: " << position << "\nID number: " << ID_number_of_employee << endl;
 }
 void Employee::get_stuff_from_warehouse() {
 
 }
 void Employee::display_employee_menu() {}; // dodane przez to ¿e funkcje nie s¹ ju¿ czysto wirtualne
 void Employee::display_tasks() {}; // dodane przez to ¿e funkcje nie s¹ ju¿ czysto wirtualne
+void Employee::display_director_menu(Employee_vector& list_of_employees) {};
 
 //--------------------------------------------------------------EMPLOYEE VECTOR-----------------------------------------------------------------------
 //Employee_vector::Employee_vector(vector<unique_ptr<Employee>> List_of_employees) { //kopiowanie obiektu (zawartoœci wektora)
@@ -87,13 +88,12 @@ Employee* Employee_vector::get_employee(size_t index) {
 Director_of_the_zoo::Director_of_the_zoo(string Name, string Last_name, string Date_of_birth, string Date_of_employment, string Position, int ID_Number_of_employee) : Employee(Name, Last_name, Date_of_birth, Date_of_employment, Position, ID_Number_of_employee) {
 
 }
-void Director_of_the_zoo::display_employee_menu() {
+void Director_of_the_zoo::display_director_menu(Employee_vector& list_of_employees) {
     int choice = 1;
     while (choice != 0) {
         display_tasks();
         cout << "Your choice (0 to escape): ";
         cin >> choice;
-        /*
         if (choice == 1) {
             string name;
             string last_name;
@@ -132,6 +132,7 @@ void Director_of_the_zoo::display_employee_menu() {
         }
         else if (choice == 2) {
             int number;
+            list_of_employees.display_all_employees();
             cout << "ID number of employee which will be erased: ";
             cin >> number;
             list_of_employees.remove_employee(number);
@@ -139,15 +140,15 @@ void Director_of_the_zoo::display_employee_menu() {
         //else if (choice == 3) display_warehouse_info();
         //else if (choice == 4) display_habitat_info();
         else if (choice == 5) list_of_employees.display_all_employees();
-        else */ if (choice != 0) cerr << "Wrong number";
+        else if (choice == 6) system("cls");
+        else if (choice != 0) cerr << "Wrong number";
     }
     
 
 
 }
 void Director_of_the_zoo::display_tasks() {
-    system("cls");
-    cout << "As an director you can :\n1. Add an employee.\n2. Erase an employee.\n3. Display info about warehouse.\n4. Display info about habitats.\n5. Display info about all employees.\n";
+    cout << "As an director you can :\n1. Add an employee.\n2. Erase an employee.\n3. Display info about warehouse.\n4. Display info about habitats.\n5. Display info about all employees.\n6. Clear display.\n";
 }
 
 //-------------------------------------------------------- MANAGER ----------------------------------------------------------------
