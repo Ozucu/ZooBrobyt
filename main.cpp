@@ -62,7 +62,7 @@ void test_director() {
 	director_ptr->display_employee_info();
 	cout << "WYSWIETLENIE MENU OPCJI DYREKTORA:\n";
 	//director_ptr->display_employee_menu();
-	static_cast<Director_of_the_zoo*>(director_ptr.get())->display_employee_menu(move(list_of_employees));
+	//static_cast<Director_of_the_zoo*>(director_ptr.get())->display_employee_menu(move(list_of_employees));
 	
 }
 void start_animals() {
@@ -85,21 +85,9 @@ void menu() {
 	cout << "Prosze wybrac pracownika: \n1. Dyrektor zoo.\n2. Zarzadca zoo.\n3. Opiekun zwierzat.\n4. Weterynarz.\n0. Wyjscie.\nPracownik nr: ";
 	int choice;
 	cin >> choice;
-	switch (choice) {
-		case 0:
-			break;
-		case 1:
-			employee_ptr = list_of_employees.get_employee(choice - 1);
-			employee_ptr->display_employee_info();
-			employee_ptr->display_tasks();
-			break;
-		case 2:
-			break;
-		case 3:
-			break;
-		case 4:
-			break;
-	}
+	employee_ptr = list_of_employees.get_employee(choice - 1);
+	employee_ptr->display_employee_info();
+	employee_ptr->display_employee_menu();
 }
 //do dorobienia wy³apywanie z³ego typu pracownika i zamiana zookeeper na Zookeeper
 //na odwórt daæ freind class

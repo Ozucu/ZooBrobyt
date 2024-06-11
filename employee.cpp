@@ -87,12 +87,13 @@ Employee* Employee_vector::get_employee(size_t index) {
 Director_of_the_zoo::Director_of_the_zoo(string Name, string Last_name, string Date_of_birth, string Date_of_employment, string Position, int ID_Number_of_employee) : Employee(Name, Last_name, Date_of_birth, Date_of_employment, Position, ID_Number_of_employee) {
 
 }
-void Director_of_the_zoo::display_employee_menu(Employee_vector list_of_employees) {
+void Director_of_the_zoo::display_employee_menu() {
     int choice = 1;
     while (choice != 0) {
         display_tasks();
         cout << "Your choice (0 to escape): ";
         cin >> choice;
+        /*
         if (choice == 1) {
             string name;
             string last_name;
@@ -138,7 +139,7 @@ void Director_of_the_zoo::display_employee_menu(Employee_vector list_of_employee
         //else if (choice == 3) display_warehouse_info();
         //else if (choice == 4) display_habitat_info();
         else if (choice == 5) list_of_employees.display_all_employees();
-        else if (choice != 0) cerr << "Wrong number";
+        else */ if (choice != 0) cerr << "Wrong number";
     }
     
 

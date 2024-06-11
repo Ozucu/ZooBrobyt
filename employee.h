@@ -31,6 +31,7 @@ public:
 class Employee_vector {
 
 	vector<unique_ptr<Employee>> list_of_employees;
+	friend class Director_of_the_zoo;
 
 public:
 	//Employee_vector(vector<unique_ptr<Employee>> = {}); //kopiowanie obiektu
@@ -47,11 +48,12 @@ class Director_of_the_zoo :public Employee
 	friend class Animal;
 	friend class Warehouse;
 	friend class Habitat;
-	friend class Employee_vector;
+	Employee_vector* employees_vector;
+	//friend class Employee_vector;
 public:
 	Director_of_the_zoo(string = "unknown", string = "unknown", string = "unknown", string = "unknown", string = "unknown", int = 0);
 	virtual void display_tasks();
-	virtual void display_employee_menu(Employee_vector list_of_employees);
+	virtual void display_employee_menu();// (Employee_vector list_of_employees);
 
 };
 
